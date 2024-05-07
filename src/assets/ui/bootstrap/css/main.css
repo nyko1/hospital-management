@@ -1503,42 +1503,42 @@ a.hospital-list {
     background: #0066ff;
     color: #ffffff; }
 
-.hospital-ratings .total-ratings {
+.total-ratings {
   display: flex;
   margin: 0 0 1rem 0; }
-  .hospital-ratings .total-ratings h2 {
+  .total-ratings h2 {
     margin: 0;
     line-height: 100%; }
-  .hospital-ratings .total-ratings .rating-stars {
+  .total-ratings .rating-stars {
     margin: .3rem 0 0 .7rem; }
-    .hospital-ratings .total-ratings .rating-stars img {
+    .total-ratings .rating-stars img {
       max-width: 17px;
       padding: 3px;
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       border-radius: 3px;
       background: #4d4d4d; }
-.hospital-ratings .ratings-list-container .ratings-list {
+.ratings-list-container .ratings-list {
   font-size: .825rem;
   display: flex;
   padding: 0 0 .6rem 0;
   margin: 0 0 .6rem 0;
   border-bottom: 1px solid #f7f7f7; }
-  .hospital-ratings .ratings-list-container .ratings-list:last-child {
+  .ratings-list-container .ratings-list:last-child {
     border-bottom: 0;
     padding: 0;
     margin: 0; }
-  .hospital-ratings .ratings-list-container .ratings-list .rating-level {
+  .ratings-list-container .ratings-list .rating-level {
     margin: 0 .5rem 0 0; }
-  .hospital-ratings .ratings-list-container .ratings-list .rating-stars {
+  .ratings-list-container .ratings-list .rating-stars {
     line-height: 100%;
     margin: .1rem 0 0 0; }
-    .hospital-ratings .ratings-list-container .ratings-list .rating-stars img {
+    .ratings-list-container .ratings-list .rating-stars img {
       max-width: 10px; }
-  .hospital-ratings .ratings-list-container .ratings-list .total {
+  .ratings-list-container .ratings-list .total {
     margin-left: auto;
     font-weight: 600; }
-    .hospital-ratings .ratings-list-container .ratings-list .total .percentage {
+    .ratings-list-container .ratings-list .total .percentage {
       margin-left: 10px;
       font-size: .725rem;
       font-weight: 700;
