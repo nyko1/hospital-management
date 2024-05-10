@@ -14,12 +14,6 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/admin/admin.module')
         .then(mod => mod.AdminModule)
     },
-    {
-        path: 'signup',
-        loadChildren: () => import('./pages/signup/signup.module')
-          .then(mod => mod.SignupModule)
-      },
-
 
     { path: '**', component: NotFoundComponent }
 
