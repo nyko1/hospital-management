@@ -13,8 +13,8 @@
         <!-- Page header start -->
         <div class="page-header">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="" routerLink="/accueil">Home</a></li>
-                <li class="breadcrumb-item active">Add Patient Details</li>
+                <li class="breadcrumb-item"><a href="" routerLink="/specialist">Home</a></li>
+                <li class="breadcrumb-item active">Add Consultation Details</li>
             </ol>
             <div class="site-award">
                 <img src="../../../../../assets/images/award.svg" alt="Award"> Best Hospital
@@ -32,14 +32,14 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Patient Details</div>
+                            <div class="card-title">Consultation Details</div>
                         </div>
                         <div class="card-body">
                             <div class="row gutters">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                     <div class="form-group">
                                         <label for="patID">Create ID</label>
-                                        <input type="text" class="form-control" id="patID" placeholder="ID">
+                                        <input (invalid)="true" type="text" class="form-control" id="patID" placeholder="ID">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
@@ -110,9 +110,46 @@
                                             placeholder="Patient History"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="inputHeight">Height</label>
+                                        <input type="number" class="form-control" id="inputHeight"
+                                            placeholder="1.76cm">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="inputWeight">Weight</label>
+                                        <input type="text" class="form-control" id="inputWeight"
+                                            placeholder="65 KG">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="inputTemperature">Temperature</label>
+                                        <input type="number" class="form-control" id="inputTemperature"
+                                            placeholder="37">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="diagnostic">Diagnostic</label>
+                                        <textarea placeholder="Diagnostic " class="form-control" id="diagnostic"
+                                            ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="Exam">Exam </label>
+                                        <textarea class="form-control" id="biO"
+                                            placeholder="Exam "></textarea>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-right">
-                                        <button class="btn btn-primary">Create Profile</button>
+                                        <button class="btn btn-primary">Create Consultation</button>
                                     </div>
                                 </div>
                             </div>

@@ -110,11 +110,22 @@
                                             placeholder="Patient History"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="text-right">
-                                        <button class="btn btn-primary">Create Profile</button>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="consultation">consultation type</label>
+                                        <select 
+                                        aria-controls="consultation" class="form-control form-control-sm selectpicker">
+                                        <option value="General">General</option>
+                                        <option value="Optician">Optician</option>
+                                    </select> 
                                     </div>
                                 </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <button class="btn btn-primary" routerLink="/accueil/invoice">Create Profile</button>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
