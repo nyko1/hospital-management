@@ -10,11 +10,20 @@ export const routes: Routes = [
           .then(mod => mod.LoginModule)
       },
     {
-    path: '',
-    loadChildren: () => import('./pages/admin/admin.module')
-        .then(mod => mod.AdminModule)
+        path: 'admin',
+        loadChildren: () => import('./pages/admin/admin.module')
+            .then(mod => mod.AdminModule)
     },
-
+    {
+        path: 'accueil',
+        loadChildren: () => import('./pages/accueil/accueil.module')
+            .then(mod => mod.AccueilModule)
+        },
+    {
+        path: 'specialist',
+        loadChildren: () => import('./pages/specialist/specialist.module')
+            .then(mod => mod.SpecialistModule)
+        },
     { path: '**', component: NotFoundComponent }
 
 ];

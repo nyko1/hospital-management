@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderComponent } from "../../../header/header.component";
 import { RouterLink } from '@angular/router';
 
@@ -11,11 +11,6 @@ import { RouterLink } from '@angular/router';
       RouterLink
     ]
 })
-export class AddPatientComponent implements OnInit{
-  ngOnInit(): void {
-  }
+export class AddPatientComponent {
 
-  goToHome(){
-    
-  }
 }
