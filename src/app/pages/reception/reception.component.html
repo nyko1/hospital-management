@@ -1,0 +1,98 @@
+<app-header></app-header>
+
+<!-- Navigation start -->
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#royalHospitalsNavbar"
+        aria-controls="royalHospitalsNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+            <i></i>
+            <i></i>
+            <i></i>
+        </span>
+    </button>
+    <div class="collapse navbar-collapse" id="royalHospitalsNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active-page" href="" routerLink="accueil">
+                    <i class="icon-devices_other nav-icon"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="doctoRs" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-date_range nav-icon"></i>
+                    Appointments
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="doctoRs">
+                    <li>
+                        <a class="dropdown-item" routerLink="list-patient">Appointments List</a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-book-open nav-icon"></i>
+                    Patients
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <li>
+                        <a class="dropdown-item" href="" routerLink="list-patient">List Patients</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="" routerLink="add-patient">Add Patient</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Navigation end -->
+
+
+
+        <!-- Content wrapper start -->
+<div class="content-wrapper">
+    <!-- Row start -->
+    <div class="row gutters">
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="hospital-tiles">
+                <img src="../../assets/images/hospital/appointment.svg" alt="Appointments" />
+                <p>Appointments</p>
+                <h2>49</h2>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="hospital-tiles">
+                <img src="../../assets/images/hospital/patient.svg" alt="Patients" />
+                <p>New Patients</p>
+                <h2>60</h2>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="hospital-tiles">
+                <img src="../../assets/images/hospital/operation.svg" alt="Operations" />
+                <p>Operations</p>
+                <h2>21</h2>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="hospital-tiles">
+                <img src="../../assets/images/hospital/doctor.svg" alt="Doctors" />
+                <p>Doctors</p>
+                <h2>75</h2>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="hospital-tiles">
+                <img src="../../assets/images/hospital/staff.svg" alt="Staff" />
+                <p>Staff</p>
+                <h2>253</h2>
+            </div>
+        </div>
+       
+    </div>
+    <!-- Row end -->
+</div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../header/header.component";
+import { HeaderComponent } from "../reception/header/header.component";
 import { RouterLink } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
     selector: 'app-accueil',
@@ -9,7 +10,8 @@ import { RouterLink } from '@angular/router';
     styleUrl: './accueil.component.css',
     imports: [
         HeaderComponent,
-        RouterLink
+        RouterLink,
+        FooterComponent
     ]
 })
 export class AccueilComponent {

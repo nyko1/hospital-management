@@ -5,18 +5,18 @@ import { AccueilComponent } from './accueil.component';
 const routes: Routes = [
   {path: '', component: AccueilComponent},
   {
-    path: 'list-patient',
-    loadChildren: () => import('../patients/list-patient/list-patient.module')
-      .then(mod => mod.ListPatientModule)
+    path: 'reception',
+    loadChildren: () => import('../reception/reception.module')
+      .then(mod => mod.ReceptionModule)
   },
   {
-    path: 'add-patient',
-    loadChildren: () => import('../patients/add-patient/add-patient.module')
-      .then(mod => mod.AddPatientModule)
+    path: 'specialist',
+    loadChildren: () => import('../specialist/specialist.module')
+      .then(mod => mod.SpecialistModule)
   },
   {
     path: 'invoice',
-    loadChildren: () => import('./invoice/invoice.module')
+    loadChildren: () => import('../reception/invoice/invoice.module')
       .then(mod => mod.InvoiceModule)
   },
 ];
