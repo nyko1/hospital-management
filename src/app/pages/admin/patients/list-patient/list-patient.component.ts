@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HeaderComponent } from '../../../reception/header/header.component';
+import { HeaderComponent } from '.././../header/header.component';
 
 
 import { Product } from '../../../../../domain/product';
@@ -11,6 +11,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-list-patient',
