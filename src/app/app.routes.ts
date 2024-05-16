@@ -24,6 +24,11 @@ export const routes: Routes = [
         loadChildren: () => import('./pages/specialist/specialist.module')
             .then(mod => mod.SpecialistModule)
         },
+    {
+        path: 'edit-password',
+        loadChildren: () => import('./pages/edit-profil/edit-profil.module')
+            .then(mod => mod.EditProfilModule)
+        },
     { path: '**', component: NotFoundComponent }
 
 ];

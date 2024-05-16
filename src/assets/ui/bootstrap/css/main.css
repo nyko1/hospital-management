@@ -3163,3 +3163,12 @@ label {
 code {
   color: #e83e8c;
   word-break: break-word; }
+
+
+.card {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+  
