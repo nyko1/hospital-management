@@ -1,0 +1,116 @@
+<!-- Header -->
+<app-header></app-header>
+
+<main>
+    <div class="main-container">
+
+        <!-- Page header start -->
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Appointement</li>
+                <li class="breadcrumb-item active">List Appointement</li>
+            </ol>
+            
+        </div>
+
+ 
+        <div class="container-fluid card">
+            <p-table 
+            #myTab3  
+            [value]="products" 
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [paginator]="true"
+            [rows]="5"
+            [globalFilterFields]="['name', 'code', 'category']"
+            [rowsPerPageOptions]="[5,10,15,20]"
+              
+            >
+                <ng-template pTemplate="caption">
+                    <div class="flex">
+                        <p-iconField iconPosition="left" class="ml-auto">
+                            <p-inputIcon styleClass="pi pi-search" />
+                            <input 
+                                pInputText 
+                                type="text" 
+                                (input)= "myTab3.filterGlobal($any($event.target).value, 'contains')"
+                                placeholder="Search keyword" />
+                        </p-iconField>
+                    </div>
+                </ng-template>
+            
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th >Create ID</th>
+                        <th >First Name</th>
+                        <th >Last Name</th>
+                        <th >Birthday</th>
+                        <th >Address</th>
+                        <th >Phone</th>
+                        <th >Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{ product.code }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.inventoryStatus }}</td>
+                        <td>
+                            <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consultation</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            <!-- Start Modal -->
+            <p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
+                styleClass="p-fluid">
+                <ng-template pTemplate="content">
+                    <div class="field">
+                        <label for="category">Consultation Type </label>
+                        <p-dropdown [(ngModel)]="product.category" inputId="category">
+                            <ng-template pTemplate="selectedItem">
+                                <p-tag [value]="product.category"/>
+                            </ng-template>
+                            <ng-template let-product pTemplate="item">
+                                <p-tag [value]="product.name"/>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                    <div class="field">
+                        <label for="Specialist">Specialist </label>
+                        <p-dropdown [(ngModel)]="product.category" inputId="specialist">
+                            <ng-template pTemplate="selectedItem">
+                                <p-tag [value]="product.category"/>
+                            </ng-template>
+                            <ng-template let-product pTemplate="item">
+                                <p-tag [value]="product.name"/>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+            
+                </ng-template>
+            
+                <ng-template pTemplate="footer">
+                    <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()" />
+                    <p-button pRipple label="Assign" icon="pi pi-check" [text]="true"  />
+                </ng-template>
+            </p-dialog>
+            <!-- End Modal -->
+        </div>
+
+       
+   </div>
+
+    <footer class="main-footer">© NykoGes Hospitals 2024</footer>
+
+    <!-- Data Tables -->
+		<script src="/src/assets/ui/params/vendor/datatables/dataTables.min.js"></script>
+		<script src="/src/assets/ui/params/vendor/datatables/dataTables.bootstrap.min.js"></script>
+		
+		<!-- Custom Data tables -->
+		<script src="/src/assets/ui/params/vendor/datatables/custom/custom-datatables.js"></script>
+		<script src="/src/assets/ui/params/vendor/datatables/custom/fixedHeader.js"></script>
+</main>
+

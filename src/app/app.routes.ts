@@ -40,6 +40,11 @@ export const routes: Routes = [
         loadChildren: () => import('./pages/edit-profil/edit-profil.module')
             .then(mod => mod.EditProfilModule)
         },
+        {
+            path: 'appointement',
+            loadChildren: () => import('./pages/appointement/appointement.module')
+                .then(mod => mod.AppointementModule)
+            },
     { path: '**', component: NotFoundComponent }
 
 ];
