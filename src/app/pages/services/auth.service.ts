@@ -40,11 +40,23 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+    }
   }
 
   isLoggedIn(): boolean {
+    if (typeof window === 'undefined') {
+      return false;
+    }
     return !!localStorage.getItem('token');
+  }
+
+  private getToken(): string | null {
+    if (typeof window === 'undefined') {
+      return null;
+    }
+    return localStorage.getItem('token');
   }
 }

@@ -42,7 +42,7 @@
                                 </div>
                                 <a href="" routerLink="/edit-password"><i class="icon-user1"></i> My Profile</a>
                                 <a href="" routerLink="add-doctor"><i class="icon-settings1"></i> Account Settings</a>
-                                <a [routerLink]="['']" href=""><i class="icon-log-out1"></i> Sign Out</a>
+                                <a (click)="logout()" href=""><i class="icon-log-out1"></i> Sign Out</a>
                             </div>
                         </div>
                     </li>
