@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HeaderComponent } from "../../../reception/header/header.component";
+import { HeaderComponent } from "../../header/header.component";
 import { FooterComponent } from "../../../footer/footer.component";
 
 // Import PrimeNg

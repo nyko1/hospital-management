@@ -22,15 +22,17 @@
 </nav>
 <!-- Navigation end -->
 
-<div class="container-fluid">
-    
-</div>
+
 
         <!-- Content wrapper start -->
 <div class="content-wrapper">
     <!-- Row start -->
     <div class="row gutters">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <p-calendar [(ngModel)]="dateInline" [showTime]="true"  hourFormat="24" [inline]="true" [showWeek]="true"></p-calendar>
+        </div>
+        
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
             <a href="" routerLink="/reception">
                 <div class="hospital-tiles">
                     <img src="../../assets/images/hospital/appointment.svg" alt="Appointments" />
@@ -42,7 +44,7 @@
         </div>
         
         
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
             <a href="" routerLink="/specialist">
                 <div class="hospital-tiles">
                     <img src="../../assets/images/hospital/doctor.svg" alt="Doctors" />

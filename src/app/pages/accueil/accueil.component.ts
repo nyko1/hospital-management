@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "../reception/header/header.component";
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
@@ -15,9 +15,16 @@ import { FormsModule } from '@angular/forms';
         RouterLink,
         FooterComponent,
         CalendarModule,
-        FormsModule
+        FormsModule,
+        
     ]
 })
-export class AccueilComponent {
-
+export class AccueilComponent implements OnInit {
+    dateInline: Date | undefined;
+    
+    ngOnInit() {
+        this.dateInline = new Date();
+        
+    }
+    
 }

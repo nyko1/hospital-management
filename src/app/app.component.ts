@@ -10,7 +10,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
         RouterOutlet,
         RouterLink,
         
-    ]
+    ],
 })
 export class AppComponent {
   title = 'hospital-management';

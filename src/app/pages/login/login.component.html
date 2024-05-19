@@ -1,41 +1,46 @@
 <main class="authentication">
- <!-- Container start -->
- <div class="container">
-        
-    <form action="#">
+    <!-- Container start -->
+    <div class="container">
+      <form (submit)="login()">
         <div class="row justify-content-md-center">
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
-                <div class="login-screen">
-                    <div class="login-box">
-                        <a href="#" class="login-logo">
-                            NykoGes Hospitals
-                        </a>
-                        <h5>Welcome back,<br />Please Login to your Account.</h5>
-                        <br>
-                        <div class="form-group">
-                            <p-floatLabel>
-                                <input class="form-control" id="email" type="text" pInputText />
-                                <label for="eamil">Email</label>
-                            </p-floatLabel>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" />
-                        </div>
-                        <div class="actions">
-                            <!-- <a href="forgot-pwd.html">Recover password</a> -->
-                            <button type="submit" routerLink="accueil" class="btn btn-info">Login</button>
-                        </div>
-                        
-                    </div>
+          <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
+            <div class="login-screen">
+              <div class="login-box">
+                <a href="" class="login-logo">
+                  NykoGes Hospitals
+                </a>
+                <h5>Welcome back,<br />Please Login to your Account.</h5>
+                <br>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Username" id="username" [(ngModel)]="username" type="text" pInputText required />
                 </div>
+                <div class="form-group">
+                  <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password" required />
+                </div>
+                <div class="actions">
+                  <!-- <a href="forgot-pwd.html">Recover password</a> -->
+                  <button type="submit" class="btn btn-info" [disabled]="loading">
+                    Login
+                  </button>
+                  @if (loading) {
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                  }
+                  
+                </div>
+                @if (errorMessage) {
+                    <div class="alert alert-danger">
+                        {{ errorMessage }}
+                      </div>
+                }
+                
+              </div>
             </div>
+          </div>
         </div>
-    </form>
-
-</div>
-<!-- Container end -->
-
-
-</main>
-
-   
+      </form>
+    </div>
+    <!-- Container end -->
+  </main>
+  
