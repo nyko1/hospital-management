@@ -22,92 +22,91 @@
     <div class="content-wrapper">
 
         <!-- Row start -->
-        <div class="row gutters">
-           
-            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
+        @if (specialistForm) {
+            <form [formGroup]="specialistForm" (ngSubmit)="onSubmit()">
+                <div class="row gutters">
+                  <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                    <div class="card">
+                      <div class="card-header">
                         <div class="card-title">Enter Specialist Details</div>
-                    </div>
-                    <div class="card-body">
+                      </div>
+                      <div class="card-body">
+                        @if (alertMessage) {
+                            <div class="alert alert-danger">
+                                {{ alertMessage }}
+                              </div>
+                        }
                         <div class="row gutters">
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="inputEmail">ID Specialiste</label>
-                                    <input type="email" class="form-control" id="inputEmail"
-                                        placeholder="HospiGes12343">
-                                </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label for="idSpecialist">ID Specialist</label>
+                              <input type="text" class="form-control" formControlName="idSpecialist" readonly required>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Srinu">
-                                </div>
+                          </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label for="firstName">First Name</label>
+                              <input type="text" class="form-control" formControlName="firstName" placeholder="Srinu" required>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Srinu">
-                                </div>
+                          </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label for="lastName">Last Name</label>
+                              <input type="text" class="form-control" formControlName="lastName" placeholder="Srinu" required>
                             </div>
-                            
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="education">Grade</label>
-                                    <input type="text" class="form-control" id="education" placeholder="Qualification">
-                                </div>
+                          </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label for="grade">Grade</label>
+                              <input type="text" class="form-control" formControlName="grade" placeholder="Qualification" required>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="inputSpeciality">Speciality</label>
-                                    <select class="form-control" id="inputSpeciality">
-                                        <option value="option1">Option 1</option>
-                                        <option value="option2">Option 2</option>
-                                    </select>
-                                </div>
+                          </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                              <label for="speciality">Speciality</label>
+                              <input type="text" class="form-control" formControlName="speciality" placeholder="Speciality" required (blur)="generateIdSpecialist()">
                             </div>
-                            
-                            
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right">
-                                    <button class="btn btn-primary">Create Profile</button>
-                                </div>
+                          </div>
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="text-right">
+                              <button type="submit" class="btn btn-primary">Create Profile</button>
                             </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <div class="card">
+                      <div class="card-header">
                         <div class="card-title">Create Account</div>
-                    </div>
-                    <div class="card-body">
+                      </div>
+                      <div class="card-body">
                         <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label for="userName">User Name</label>
-                                    <input type="text" class="form-control" id="userName" placeholder="User Name">
-                                </div>
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group">
+                              <label for="userName">User Name</label>
+                              <input type="text" class="form-control" formControlName="userName" placeholder="User Name" readonly required>
                             </div>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
-                                </div>
+                          </div>
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
                             </div>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label for="rePassword">Re-enter Password</label>
-                                    <input type="password" class="form-control" id="rePassword"
-                                        placeholder="New Password">
-                                </div>
-                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
+              </form>
+              
+              
+        }
+       
+              
+              
         <!-- Row end -->
 
     </div>

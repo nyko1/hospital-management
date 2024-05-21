@@ -12,8 +12,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  register(username: string, password: string, role: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, { username, password, role });
+  register(iduser: string, username: string, password: string, role: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
+    return this.http.post<any>(`${this.apiUrl}/register`, { iduser, username, password, role }, {headers});
   }
 
   login(username: string, password: string): Observable<any> {
@@ -54,9 +55,25 @@ export class AuthService {
   }
 
   private getToken(): string | null {
-    if (typeof window === 'undefined') {
+    if (typeof localStorage === 'undefined') {
       return null;
     }
     return localStorage.getItem('token');
   }
+
+    // Obtient la liste rôle de l'utilisateur depuis la bd
+    getRole(): string | null {
+      if (typeof window === 'undefined') {
+        return null;
+      }
+      
+      const role = localStorage.getItem('role');
+      return role ? role : null;
+    }
+    
+    
+
+    getUsers(): Observable<any>{
+      return this.http.get<any>(`${this.apiUrl}/users`);
+    }
 }

@@ -30,36 +30,28 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
-  login() {
+  login(): void {
     this.loading = true;
     this.errorMessage = undefined;
     this.authService.login(this.username!, this.password!).subscribe(
       response => {
+        
         const role = localStorage.getItem('role');
         this.loading = false;
         switch (role) {
           case 'admin':
-            this.router.navigate(['/admin']);
+            this.router.navigate(['admin']).catch(err => console.error('Navigation error:', err));
+            console.log("Connexion OK");
             break;
           case 'reception':
-            this.router.navigate(['/reception']);
-            break;
-          case 'infirmier':
-            this.router.navigate(['/infirmier']);
-            break;
-          case 'medecin':
-            this.router.navigate(['/medecin']);
-            break;
-          case 'technicien de laboratoire':
-            this.router.navigate(['/laboratoire-dashboard']);
-            break;
-          case 'sage femme':
-            this.router.navigate(['/sage-femme-dashboard']);
+          case 'receptionniste':
+            this.router.navigate(['/reception']).catch(err => console.error('Navigation error:', err));
             break;
           default:
-            this.router.navigate(['/']);
+            this.router.navigate(['/specialist']).catch(err => console.error('Navigation error:', err));
             break;
         }
+        
       },
       error => {
         this.loading = false;
