@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from "../../header/header.component";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'; // Importer ReactiveFormsModule
 import { startWith } from 'rxjs/operators'; // Importer startWith et combineLatest
 import { SpecialistService } from '../../../services/specialist.service';
 import { AuthService } from '../../../services/auth.service';
+
 
 
 
@@ -40,6 +40,8 @@ export class AddDoctorComponent implements OnInit{
     ) {}
 
     ngOnInit(): void {
+
+               
         this.specialistForm = this.fb.group({
           idSpecialist: [{ value: '', disabled: true }],
           firstName: ['', Validators.required],
@@ -58,12 +60,7 @@ export class AddDoctorComponent implements OnInit{
         this.specialistForm.get('lastName')?.valueChanges.pipe(startWith('')).subscribe(() => {
           this.generateUserName();
         });
-    }
-
-    get f() {
-        return this.specialistForm?.controls;
-      }
-    
+    }    
     
     generateUserName() {
         let firstName = this.specialistForm!.get('firstName')?.value || '';
@@ -144,11 +141,12 @@ export class AddDoctorComponent implements OnInit{
                     this.alertMessage = `Echec de l\'Enregistrement de ${userData.username}`;
                   }  
             )
+            this.specialistForm?.reset()
             this.alertMessage = '';
         }else {
             this.alertMessage = 'Tous les champs sont obligatoires. Veuillez les remplir avant de soumettre le formulaire.';
             }
-        this.specialistForm?.reset()
+        
         this.formSubmitted = false;
     }
 

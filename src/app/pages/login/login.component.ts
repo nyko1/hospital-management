@@ -35,9 +35,10 @@ export class LoginComponent implements OnInit {
     this.errorMessage = undefined;
     this.authService.login(this.username!, this.password!).subscribe(
       response => {
-        
+        //localStorage.setItem('user', JSON.stringify(response));
         const role = localStorage.getItem('role');
         this.loading = false;
+        
         switch (role) {
           case 'admin':
             this.router.navigate(['admin']).catch(err => console.error('Navigation error:', err));

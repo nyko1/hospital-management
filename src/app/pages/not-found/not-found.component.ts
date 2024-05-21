@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { AdminComponent } from '../admin/admin.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-not-found',
@@ -15,14 +16,15 @@ import { AdminComponent } from '../admin/admin.component';
 export class NotFoundComponent implements OnInit{
 
   constructor(
-    private router : Router
+    private router : Router,
+    private location: Location
   ){}
   ngOnInit(){
     
   } 
 
-  goToAdminHomePage(){
-    this.router.navigate(['']);
+  goToBackPage(){
+    this.location.back();
   }
 
   

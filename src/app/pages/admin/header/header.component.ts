@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -10,9 +10,24 @@ import { AuthService } from '../../services/auth.service';
         RouterLink,
     ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+    userInfo: any;
     
     constructor(private authService: AuthService, private router: Router) { }
+    ngOnInit(): void {
+        if (typeof window != 'undefined') {
+            this.authService.getUserById(localStorage.getItem('id')!).subscribe(
+                response =>{
+                    this.userInfo = response
+                    console.log(this.userInfo.USERNAME);
+                    
+                },  
+                error => {
+                    console.error('No id in localstorage', error);
+                }
+            )
+          }
+    }
     
     logout() {
         this.authService.logout();

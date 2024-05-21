@@ -8,142 +8,55 @@
         <div class="page-header">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="" routerLink="/admin">Home</a></li>
-                <li class="breadcrumb-item active">Specialist List</li>
+                <li class="breadcrumb-item active">User List</li>
             </ol>
         </div>
         <!-- Page header end -->
 
 
-        <!-- Content wrapper start -->
-        <div class="content-wrapper">
-
-            <!-- Row start -->
-            <div class="row gutters">
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Neurosurgery</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="" [routerLink]="['/admin/edit-doctor']">Dr. John Willams</a>
-                                <a href="" [routerLink]="['/admin/edit-doctor']">Dr. K Sam Kumar</a>
-                                <a href="" [routerLink]="['/admin/edit-doctor']">Dr. N Preethish Kumar</a>
-                                <a href="" [routerLink]="['/admin/edit-doctor']">Dr. G Chandrashekar</a>
-                            </div>
-                        </div>
+        <div class="container-fluid card">
+            <p-table 
+            #myTab  
+            [value]="userInfo" 
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [paginator]="true"
+            [rows]="5"
+            [globalFilterFields]="['USERNAME', 'ROLE']"
+            [rowsPerPageOptions]="[5,10,15,20]"
+              
+            >
+                <ng-template pTemplate="caption">
+                    <div class="flex">
+                        <p-iconField iconPosition="left" class="ml-auto">
+                            <p-inputIcon styleClass="pi pi-search" />
+                            <input 
+                                pInputText 
+                                type="text" 
+                                (input)= "myTab.filterGlobal($any($event.target).value, 'contains')"
+                                placeholder="Search keyword" />
+                        </p-iconField>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Dermatology</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="" [routerLink]="['/edit-doctor']">Dr. William G. Bowen</a>
-                                <a href="#">Dr. Keith Brandt</a>
-                                <a href="#">Dr. Robert Brophy</a>
-                                <a href="#">Dr. Craig Buchman</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Cardiology</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="#">Dr. Tom Bartholet</a>
-                                <a href="#">Dr. Michael Berk</a>
-                                <a href="#">Dr. Dale Colorado</a>
-                                <a href="#">Dr. Jennifer Dunn</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Ophthalmology</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="#">Dr. Lorena Buffa</a>
-                                <a href="#">Dr. Kenneth Carson</a>
-                                <a href="#">Dr. Murali Chinala</a>
-                                <a href="#">Dr. Douglas M. Char</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Orthopedics</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="#">Dr. Jennifer Arter</a>
-                                <a href="#">Dr. Foluso Ademuyiwa</a>
-                                <a href="#">Dr. Milan Anadkat</a>
-                                <a href="#">Dr. Ana Marie Arbelaez</a>   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Dentistry</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="#">Dr. Courtney Chrisler</a>
-                                <a href="#">Dr. Douglas Coplen</a>
-                                <a href="#">Dr. Ferdinand Coste</a>
-                                <a href="#">Dr. Sharon Cresci</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Rheumatology</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="#">Dr. Sylvia Awadalla</a>
-                                <a href="#">Dr. Leonard B. Bacharier</a>
-                                <a href="#">Dr. Jonathan Baker</a>
-                                <a href="#">Dr. Philip Barger</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Psychiatry</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="doctors-list">
-                                <a href="#">Dr. Lenise Cummings</a>
-                                <a href="#">Dr. Charl De Wet</a>
-                                <a href="#">Dr. Vladimir Despotovic</a>
-                                <a href="#">Dr. Patrick Dillon</a>   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Row end -->
-
+                </ng-template>
+            
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:25%">User ID</th>
+                        <th style="width:25%">Username</th>
+                        <th style="width:25%">Role</th>
+                        <th style="width:25%">Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-user>
+                    <tr>
+                        <td>{{ user.IDUSER }}</td>
+                        <td>{{ user.USERNAME }}</td>
+                        <td>{{ user.ROLE }}</td>
+                        <td></td>
+                       
+                    </tr>
+                </ng-template>
+            </p-table>
         </div>
-        <!-- Content wrapper end -->
 
     </div>
     <!-- *************
