@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from "../reception/header/header.component";
+import { HeaderComponent } from "../header/header.component";
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { CalendarModule } from 'primeng/calendar';

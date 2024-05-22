@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../service/productservice';
 import { Product } from '../../../domain/product';
 import { RouterLink } from '@angular/router';
-import { HeaderComponent } from '../specialist/header/header.component';
+import { HeaderComponent } from '../header/header.component';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { IconFieldModule } from 'primeng/iconfield';

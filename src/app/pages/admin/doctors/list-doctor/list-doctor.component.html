@@ -8,7 +8,7 @@
         <div class="page-header">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="" routerLink="/admin">Home</a></li>
-                <li class="breadcrumb-item active">User List</li>
+                <li class="breadcrumb-item active">Specialists List</li>
             </ol>
         </div>
         <!-- Page header end -->
@@ -17,11 +17,11 @@
         <div class="container-fluid card">
             <p-table 
             #myTab  
-            [value]="userInfo" 
+            [value]="specialists" 
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="true"
             [rows]="5"
-            [globalFilterFields]="['USERNAME', 'ROLE']"
+            [globalFilterFields]="['NOMSPECIALISTE', 'PRENOMSPECIALISTE', 'SPECIALITE', 'GRADESPECIALISTE']"
             [rowsPerPageOptions]="[5,10,15,20]"
               
             >
@@ -41,16 +41,20 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width:25%">User ID</th>
-                        <th style="width:25%">Username</th>
-                        <th style="width:25%">Role</th>
+                        <th style="width:25%">Nom</th>
+                        <th style="width:25%">Prenoms</th>
+                        <th style="width:25%">Specialite</th>
+                        <th style="width:25%">Grade</th>
                         <th style="width:25%">Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-user>
+                <ng-template pTemplate="body" let-specialist>
                     <tr>
-                        <td>{{ user.IDUSER }}</td>
-                        <td>{{ user.USERNAME }}</td>
-                        <td>{{ user.ROLE }}</td>
+                        <td>{{ specialist.IDSPECIALISTE }}</td>
+                        <td>{{ specialist.NOMSPECIALISTE }}</td>
+                        <td>{{ specialist.PRENOMSPECIALISTE }}</td>
+                        <td>{{ specialist.SPECIALITE }}</td>
+                        <td>{{ specialist.GRADESPECIALISTE }}</td>
                         <td></td>
                        
                     </tr>

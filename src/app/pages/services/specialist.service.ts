@@ -20,5 +20,9 @@ export class SpecialistService {
   getSpecialists(): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/list-specialist`)
   }
+
+  getSpecialistById(id: string): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/${id}`)
+  }
 }
 
