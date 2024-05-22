@@ -24,5 +24,13 @@ export class SpecialistService {
   getSpecialistById(id: string): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/${id}`)
   }
+
+  getDoctorCount(): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/count-doctor`)
+  }
+
+  getStaffCount(): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/count-staff`)
+  }
 }
 
