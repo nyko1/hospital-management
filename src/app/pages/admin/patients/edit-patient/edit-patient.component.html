@@ -1,0 +1,139 @@
+<!-- Header -->
+<app-header></app-header>
+
+
+<div class="container-fluid">
+
+    <!-- *************
+        ************ Main container start *************
+    ************* -->
+    <div class="main-container">
+
+        <br><br>
+        <!-- Page header start -->
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item active">Edit Patient Details</li>
+            </ol>
+            <div class="site-award">
+                <img src="../../../../../assets/images/award.svg" alt="Award"> Best Hospital
+            </div>
+        </div>
+        <!-- Page header end -->
+
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+
+            <!-- Row start -->
+            <div class="row gutters">
+                
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Patient Details</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="patID">Create ID</label>
+                                        <input type="text" class="form-control" id="patID" placeholder="ID">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">First Name</label>
+                                        <input type="text" class="form-control" id="fullName" placeholder="Srinu">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Srinu">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="agE">Birthday</label>
+                                        <input type="date" class="form-control" id="agE">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="phoNe">Phone</label>
+                                        <input type="text" class="form-control" id="phoNe" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="inputEmail">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail"
+                                            placeholder="medical@bm.com">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="addreSs">Current Address</label>
+                                        <input class="form-control" id="addreSs"
+                                            placeholder="Current Address">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="job">Patient Job</label>
+                                        <input class="form-control" id="job"
+                                            placeholder="Current job">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="sanguinGrp">Sanguin Group</label>
+                                        <select 
+                                        aria-controls="sanguinGrp" class="form-control form-control-sm selectpicker">
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="A-">A-</option>
+                                        <option value="A+">A+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="B+">B+</option>
+                                    </select> 
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="form-group">
+                                        <label for="biO">Patient History</label>
+                                        <textarea class="form-control" id="biO"
+                                            placeholder="Patient History"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-left">
+                                        <button class="btn btn-warning" (click)="goToBackPage()">Cancel</button>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <button class="btn btn-primary">Edit Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row end -->
+
+        </div>
+        <!-- Content wrapper end -->
+
+    </div>
+    <!-- *************
+        ************ Main container end *************
+    ************* -->
+
+
+</div>

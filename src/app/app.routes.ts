@@ -28,6 +28,12 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/accueil/accueil.component')
             .then(mod => mod.AccueilComponent)
     },
+    {
+        path: 'edit-profile/:id',
+        loadChildren: () => import('./pages/edit-profil/edit-profil.module')
+            .then(mod => mod.EditProfilModule)
+    },
+    
 
 
     

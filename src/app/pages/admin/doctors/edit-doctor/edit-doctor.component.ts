@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SpecialistService } from '../../../services/specialist.service';
@@ -6,6 +6,8 @@ import { AuthService } from '../../../services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+
+
 
 @Component({
     selector: 'app-edit-doctor',

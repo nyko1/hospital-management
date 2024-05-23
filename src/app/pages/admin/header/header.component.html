@@ -19,7 +19,7 @@
         <!-- Row start -->
         <div class="row gutters">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-                <a routerLink="/admin" class="logo">NykoGes <span>Hospitals</span></a>
+                <a routerLink="/admin" class="logo">NykoGes <span>Hospital</span></a>
             </div>
             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
 
@@ -45,8 +45,7 @@
                                         <h5>{{userInfo.USERNAME}}</h5>
                                         <p>{{userInfo.USERNAME}}</p>
                                     </div>
-                                    <a href="" routerLink="/edit-password"><i class="icon-user1"></i> My Profile</a>
-                                    <a href="" routerLink="add-doctor"><i class="icon-settings1"></i> Account Settings</a>
+                                    <a href="" [routerLink]="['/edit-profile', userInfo.IDUSER]"><i class="icon-settings1"></i> Reset Password</a>
                                     <a (click)="logout()" href=""><i class="icon-log-out1"></i> Sign Out</a>
                                 </div>
                             </div>

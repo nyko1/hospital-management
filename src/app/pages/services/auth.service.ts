@@ -30,11 +30,9 @@ export class AuthService {
   }
 
   // Change Password
-  changePassword(oldPassword: string, newPassword: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': localStorage.getItem('token') || ''
-    });
-    return this.http.post<any>(`${this.apiUrl}/change-password`, { oldPassword, newPassword }, { headers });
+  changePassword(idUser: string, oldPassword: string, newPassword: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
+    return this.http.post<any>(`${this.apiUrl}/change-password/${idUser}`, { oldPassword, newPassword }, { headers });
   }
 
   resetPassword(idUser: string, newPassword: string): Observable<any> {

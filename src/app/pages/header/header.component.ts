@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { SpecialistService } from '../services/specialist.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit{
         private authService: AuthService, 
         private router: Router,
         private specialistService: SpecialistService,
+        private location: Location
     ) { }
 
     ngOnInit(): void {
@@ -51,4 +53,8 @@ export class HeaderComponent implements OnInit{
         this.authService.logout();
         this.router.navigate(['/login']);
       }
+
+    goBack(){
+        this.location.back()
+    }
 }

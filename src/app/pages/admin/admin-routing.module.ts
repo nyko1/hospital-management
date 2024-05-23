@@ -21,10 +21,21 @@ const routes: Routes = [
           .then(mod => mod.ListPatientModule)
       },
       {
+        path: 'add-patient',
+        loadChildren: () => import('./patients/add-patient/add-patient.module')
+          .then(mod => mod.AddPatientModule)
+      },
+      {
+        path: 'edit-patient/:id',
+        loadChildren: () => import('./patients/edit-patient/edit-patient.module')
+          .then(mod => mod.EditPatientModule)
+      },
+      {
         path: 'edit-doctor/:id',
         loadChildren: () => import('./doctors/edit-doctor/edit-doctor.module')
           .then(mod => mod.EditDoctorModule)
       },
+      
 
 
     
