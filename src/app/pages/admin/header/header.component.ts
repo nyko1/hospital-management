@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit{
             this.authService.getUserById(localStorage.getItem('id')!).subscribe(
                 response =>{
                     this.userInfo = response
-                    console.log(this.userInfo.USERNAME);
+                    //console.log(this.userInfo.USERNAME);
                     
                 },  
                 error => {

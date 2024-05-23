@@ -7,6 +7,8 @@ import { startWith } from 'rxjs/operators'; // Importer startWith et combineLate
 import { SpecialistService } from '../../../services/specialist.service';
 import { AuthService } from '../../../services/auth.service';
 
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -18,10 +20,12 @@ import { AuthService } from '../../../services/auth.service';
         RouterLink,
         HeaderComponent,
         ReactiveFormsModule,
+        ToastModule
         
     ],
     providers:[
-        SpecialistService
+        SpecialistService,
+        MessageService
     ]
 })
 export class AddDoctorComponent implements OnInit{
@@ -35,9 +39,15 @@ export class AddDoctorComponent implements OnInit{
     constructor(
         private specialistService: SpecialistService, 
         private fb: FormBuilder,
-        private authService: AuthService 
+        private authService: AuthService ,
+        private messageService: MessageService
         
     ) {}
+
+
+    show() {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Save Succefuly' });
+    }
 
     ngOnInit(): void {
 
@@ -100,7 +110,7 @@ export class AddDoctorComponent implements OnInit{
                 specialite: formData.speciality,
                 gradespecialiste: formData.grade
             };
-            console.log(specialistData);
+            // console.log(specialistData);
             
             
             // Préparer les données utilisateur à partir des données du formulaire
@@ -117,7 +127,7 @@ export class AddDoctorComponent implements OnInit{
                 specialistData.prenomspecialiste, specialistData.specialite, specialistData.gradespecialiste)
                     .subscribe(response =>{
                 this.loading = false;
-                console.log('Specialist created:',response);
+                // console.log('Specialist created:',response);
                 
             },
             error => {
@@ -142,6 +152,7 @@ export class AddDoctorComponent implements OnInit{
                   }  
             )
             this.specialistForm?.reset()
+            this.show()
             this.alertMessage = '';
         }else {
             this.alertMessage = 'Tous les champs sont obligatoires. Veuillez les remplir avant de soumettre le formulaire.';

@@ -37,11 +37,9 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/change-password`, { oldPassword, newPassword }, { headers });
   }
 
-  resetPassword(username: string, newPassword: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': localStorage.getItem('token') || ''
-    });
-    return this.http.post<any>(`${this.apiUrl}/reset-password`, { username, newPassword }, { headers });
+  resetPassword(idUser: string, newPassword: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
+    return this.http.put<any>(`${this.apiUrl}/reset-password/${idUser}`, {newPassword}, { headers });
   }
 
   logout(): void {
@@ -86,6 +84,10 @@ export class AuthService {
 
     getUserById(userId: string): Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/user/${userId}`);
+    }
+
+    deleteUser(userId: string): Observable<any> {
+      return this.http.delete<any>(`${this.apiUrl}/delete-user/${userId}`);
     }
     
 }
