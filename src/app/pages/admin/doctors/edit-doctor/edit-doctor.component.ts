@@ -28,8 +28,6 @@ import { ToastModule } from 'primeng/toast';
 export class EditDoctorComponent implements OnInit {
 
   id: string | null | undefined;
-  specialists: any;
-  users: any;
   
   specialistForm: FormGroup | undefined ;
   loading = false;
@@ -108,22 +106,28 @@ export class EditDoctorComponent implements OnInit {
           this.showError()
         }
       );
+      
     }
   
 
   resetPassword(){
     const formValue = this.userForm!.value;
-    this.authService.resetPassword(
-      this.idUser!,
-      formValue.password
-    ).subscribe(
-      res =>{
-        this.showPassword()
-      },
-      error =>{
-        this.showError()
-      }
-    )
+    if (formValue.password != "") {
+      this.authService.resetPassword(
+        this.idUser!,
+        formValue.password
+      ).subscribe(
+        res =>{
+          this.showPassword()
+        },
+        error =>{
+          this.showError()
+        }
+      )
+    }else{
+      this.showError2()
+    }
+    
   }
 
   showPassword() {
@@ -137,6 +141,12 @@ export class EditDoctorComponent implements OnInit {
   showError() {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error Edit' });
   }
-  
+
+  showError2() {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Enter your password' });
+}
+  showError3() {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nothing change' });
+}
 
 }

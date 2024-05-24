@@ -92,7 +92,9 @@
                     <div class="hospital-tiles">
                         <img src="../../assets/images/hospital/patient.svg" alt="Patients" />
                         <p>Patients</p>
-                        <h2>60</h2>
+                        @if (nombrePatients) {
+                            <h2>{{nombrePatients}}</h2>
+                        }
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">

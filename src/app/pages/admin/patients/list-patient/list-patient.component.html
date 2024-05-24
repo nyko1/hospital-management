@@ -17,7 +17,7 @@
         <div class="container-fluid card">
             <p-table 
             #myTab  
-            [value]="products" 
+            [value]="patients" 
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="true"
             [rows]="5"
@@ -46,22 +46,22 @@
                         <th>Birthday</th>
                         <th>Address</th>
                         <th>Phone</th>
-                        <th>Consultation type</th>
+                        <th>Job </th>
                         <th>Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-patient >
                     <tr>
-                        <td>{{ product.code }}</td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.category }}</td>
-                        <td>{{ product.quantity }}</td>
-                        <td>{{ product.price }}</td>
-                        <td>{{ product.inventoryStatus }}</td>
-                        <td>{{ product.rating }}</td>
+                        <td>{{ patient.IDDOSSIERPATIENT }}</td>
+                        <td>{{ patient.PRENOMSPATIENT }}</td>
+                        <td>{{ patient.NOMPATIENT }}</td>
+                        <td>{{ patient.DATENAISSPATIENT }}</td>
+                        <td>{{ patient.ADRESSEPATIENT }}</td>
+                        <td>{{ patient.TELPATIENT }}</td>
+                        <td>{{ patient.PROFESSIONPATIENT }}</td>
                         <td>
-                            <button type="button"  style="margin: 10px 10px 10px 0px;" (click)="editPatient(product.code)"  class="btn btn-primary btn-sm">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm" >Delete</button>
+                            <button type="button"  style="margin: 10px 10px 10px 0px;" (click)="editPatient(patient.IDDOSSIERPATIENT)"  class="btn btn-primary btn-sm">Edit</button>
+                            <button type="button" class="btn btn-danger btn-sm" (click)="confirmDelete(patient.IDDOSSIERPATIENT)" >Delete</button>
                         </td>
                     </tr>
                 </ng-template>
@@ -69,19 +69,15 @@
 
 
             <p-dialog header="Confirm Delete" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [closable]="false">
-                <p>Are you sure you want to delete this specialist?</p>
+                <p>Are you sure you want to delete this patient?</p>
                 <p-footer>
-                    <button type="button" pButton icon="pi pi-check" label="Yes"  class="ui-button-success" style="margin-right: 10px;"></button>
+                    <button type="button" pButton icon="pi pi-check" label="Yes" (click)="onDelete()"  class="ui-button-success" style="margin-right: 10px;"></button>
                     <button type="button" pButton icon="pi pi-times" label="No" (click)="displayModal=false" class="ui-button-danger"></button>
                 </p-footer>
             </p-dialog>
     
-    
-            
              <!-- Notifications Toast -->
-             <div class="card flex justify-content-center">
-                <p-toast></p-toast>
-              </div>
+             <p-toast></p-toast>
         </div>
 
        
