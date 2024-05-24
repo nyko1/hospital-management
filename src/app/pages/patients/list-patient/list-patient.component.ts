@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../header/header.component';
 
 
@@ -26,6 +26,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
+import { MessageService } from 'primeng/api';
+import { PatientService } from '../../../../service/patient.service';
 
 @Component({
   selector: 'app-list-patient',
@@ -66,8 +68,6 @@ import { RatingModule } from 'primeng/rating';
 ]
 })
 export class ListPatientComponent  implements OnInit{
-  products!: Product[];
-  product!: Product;
 
   productDialog: boolean = false;
   selectedProducts!: Product[] | null;
@@ -76,18 +76,34 @@ export class ListPatientComponent  implements OnInit{
 
   statuses!: any[];
   modalTitle: string | undefined
+  displayModal: boolean = false;
+  patients: any;
+  idPatient: string | undefined
+  patient: {} | undefined;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    //private messageService: MessageService,
+    private patientService: PatientService
+  ) {}
 
   ngOnInit() {
     
-      this.productService.getProducts().then((data) => {
-          this.products = data;
-      });
+      this.patientService.getPatients()
+      .subscribe((data) => {
+        this.patients = data;
+        
+    },
+    error =>{
+      console.error(error);
+      
+    }
+  );
   }
 
   openNew(title: string) {
-    this.product = {};
+    this.patient = {};
     this.submitted = false;
     this.productDialog = true;
     this.modalTitle = title

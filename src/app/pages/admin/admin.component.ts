@@ -25,7 +25,7 @@ import { response } from 'express';
 export class AdminComponent implements OnInit{
   specialists: any;
   nombreSpecialiste: Number | undefined
-  nombreStaff: any;
+  nombreStaff: number | undefined;
   nombrePatients: Number | undefined;
 
 

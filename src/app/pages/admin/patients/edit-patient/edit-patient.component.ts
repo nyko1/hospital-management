@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PatientService } from '../../../../../service/patient.service';
 import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -25,13 +26,13 @@ export class EditPatientComponent implements OnInit{
 
   idPatient: string | null | undefined 
   patientForm: FormGroup | undefined;
-alertMessage: any;
+  alertMessage: any;
 
 
   constructor(
     private location: Location,
-    private fb: FormBuilder,
     private route: ActivatedRoute,
+    //private messageService: MessageService,
     private patientService: PatientService
     
   ){}

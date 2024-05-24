@@ -17,11 +17,11 @@
         <div class="container-fluid card">
             <p-table 
             #myTab  
-            [value]="products" 
+            [value]="patients" 
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="true"
             [rows]="5"
-            [globalFilterFields]="['name', 'code', 'category']"
+            [globalFilterFields]="['PRENOMSPATIENT', 'NOMPATIENT', 'DATENAISSPATIENT', 'TELPATIENT', 'PROFESSIONPATIENT']"
             [rowsPerPageOptions]="[5,10,15,20]"
               
             >
@@ -40,7 +40,6 @@
             
                 <ng-template pTemplate="header">
                     <tr>
-                        <th >Create ID</th>
                         <th >First Name</th>
                         <th >Last Name</th>
                         <th >Birthday</th>
@@ -49,14 +48,14 @@
                         <th >Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-patient>
                     <tr>
-                        <td>{{ product.code }}</td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.category }}</td>
-                        <td>{{ product.quantity }}</td>
-                        <td>{{ product.price }}</td>
-                        <td>{{ product.inventoryStatus }}</td>
+                        <td>{{ patient.PRENOMSPATIENT }}</td>
+                        <td>{{ patient.NOMPATIENT }}</td>
+                        <td>{{ patient.DATENAISSPATIENT }}</td>
+                        <td>{{ patient.ADRESSEPATIENT }}</td>
+                        <td>{{ patient.TELPATIENT }}</td>
+                        <td>{{ patient.PROFESSIONPATIENT }}</td>
                         <td>
                             
                             <button type="button" style="margin-right: 10px;" (click)="openNew('Consultation Details')" class="btn btn-primary btn-sm">Consultation</button>
@@ -71,9 +70,11 @@
                 <ng-template pTemplate="content">
                     <div class="field">
                         <label for="category">Consultation Type </label>
-                        <p-dropdown [(ngModel)]="product.category" inputId="category">
+                        <!-- [(ngModel)]="product.category" -->
+                        <p-dropdown  inputId="category">
                             <ng-template pTemplate="selectedItem">
-                                <p-tag [value]="product.category"/>
+                                <!-- [value]="product.category" -->
+                                <p-tag />
                             </ng-template>
                             <ng-template let-product pTemplate="item">
                                 <p-tag [value]="product.name"/>
@@ -82,12 +83,15 @@
                     </div>
                     <div class="field">
                         <label for="Specialist">Specialist </label>
-                        <p-dropdown [(ngModel)]="product.category" inputId="specialist">
+                        <!-- [(ngModel)]="product.category" (mettre juste en doussous) -->
+                        <p-dropdown  inputId="specialist">
                             <ng-template pTemplate="selectedItem">
-                                <p-tag [value]="product.category"/>
+                                <!-- [value]="product.category" -->
+                                <p-tag />
                             </ng-template>
                             <ng-template let-product pTemplate="item">
-                                <p-tag [value]="product.name"/>
+                                <!-- [value]="product.name" -->
+                                <p-tag />
                             </ng-template>
                         </p-dropdown>
                     </div>

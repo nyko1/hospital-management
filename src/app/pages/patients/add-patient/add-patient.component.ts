@@ -3,7 +3,7 @@ import { HeaderComponent } from "../../header/header.component";
 import { RouterLink } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { PatientService } from '../../../../../service/patient.service';
+import { PatientService } from '../../../../service/patient.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
