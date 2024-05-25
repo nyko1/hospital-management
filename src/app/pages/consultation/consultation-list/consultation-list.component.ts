@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
-
 import { ToastModule } from 'primeng/toast';
 
 import { PatientService } from '../../services/patient.service';
@@ -18,54 +17,62 @@ import { Consultation } from '../../models/consultation.model';
     selector: 'app-consultation-list',
     standalone: true,
     templateUrl: './consultation-list.component.html',
-    styleUrl: './consultation-list.component.css',
+    styleUrls: ['./consultation-list.component.css'],
     imports: [
       HeaderComponent,
       RouterLink,
-      HeaderComponent,
       TableModule, 
       CommonModule,
       IconFieldModule,
       InputIconModule,
       InputTextModule,
       ToastModule, 
-      
     ],
-    providers:[
+    providers: [
       PatientService,
       ConsultationService
     ]
 })
-export class ConsultationListComponent implements OnInit{
-  patients: any
-  consultations: Consultation[] | undefined
-
+export class ConsultationListComponent implements OnInit {
+  patients: any[] = [];
+  consultations: Consultation[] = [];
+  todayConsultations: any[] = [];
 
   constructor(
     private patientService: PatientService,
     private consultationService: ConsultationService
-  ){}
+  ) {}
 
   ngOnInit(): void {
-    
     this.patientService.getPatients().subscribe(
-      data =>{
-        this.patients = data
+      data => {
+        this.patients = data;
+        console.log('Patients:', this.patients);
+        this.consultationService.getConsultations().subscribe(
+          data => {
+            this.consultations = data;
+            console.log('Consultations:', this.consultations);
+            this.filterTodayConsultations();
+          }
+        );
       }
-    )
-    this.consultationService.getConsultations().subscribe(
-      data =>{
-        this.consultations = data
-        
-        //this.patientService.getPatient()
-        console.log(this.consultations);
-        
-      }
-    )
+    );
   }
 
-
-
-
-
+  filterTodayConsultations(): void {
+    const today = new Date().toISOString().split('T')[0];
+    this.todayConsultations = this.consultations
+      .filter(consultation => consultation.DATECONSULTATION!.startsWith(today))
+      .map(consultation => {
+        const patient = this.patients.find((patient: { IDDOSSIERPATIENT: string; }) => patient.IDDOSSIERPATIENT === consultation.IDDOSSIERPATIENT);
+        return {
+          ...consultation,
+          patientName: patient ? patient.NOMPATIENT : '',
+          patientSurname: patient ? patient.PRENOMSPATIENT : '',
+          patientTel: patient ? patient.TELPATIENT : ''
+        };
+      });
+    
+    console.log('Today Consultations:', this.todayConsultations);
+  }
 }

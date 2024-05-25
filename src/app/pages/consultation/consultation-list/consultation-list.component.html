@@ -17,7 +17,7 @@
         <div class="container-fluid card">
             <p-table 
             #myTab3  
-            [value]="patients" 
+            [value]="todayConsultations" 
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="true"
             [rows]="5"
@@ -48,13 +48,13 @@
                         <th >Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-patient>
+                <ng-template pTemplate="body" let-toDayConsultation let-i="rowIndex">
                     <tr>
-                        <td>{{ patient.IDDOSSIERPATIENT }}</td>
-                        <td>{{ patient.NOMPATIENT }}</td>
-                        <td>{{ patient.PRENOMSPATIENT }}</td>
-                        <td>{{ patient.TELPATIENT }}</td>
-                        <td>{{ patient.PROFESSIONPATIENT }}</td>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ toDayConsultation.patientName }}</td>
+                        <td>{{ toDayConsultation.patientSurname }}</td>
+                        <td>{{ toDayConsultation.patientTel }}</td>
+                        <td>{{ toDayConsultation.TYPECONSULTATION }}</td>
                         <td>
                             <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consulter</button>
                         </td>
