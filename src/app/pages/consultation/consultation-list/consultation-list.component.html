@@ -1,0 +1,74 @@
+<!-- Header -->
+<app-header></app-header>
+
+<main>
+    <div class="main-container">
+
+        <!-- Page header start -->
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Consultation</li>
+                <li class="breadcrumb-item active">Consultation List</li>
+            </ol>
+            
+        </div>
+
+ 
+        <div class="container-fluid card">
+            <p-table 
+            #myTab3  
+            [value]="patients" 
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [paginator]="true"
+            [rows]="5"
+            [globalFilterFields]="['name', 'code', 'category']"
+            [rowsPerPageOptions]="[5,10,15,20]"
+              
+            >
+                <ng-template pTemplate="caption">
+                    <div class="flex">
+                        <p-iconField iconPosition="left" class="ml-auto">
+                            <p-inputIcon styleClass="pi pi-search" />
+                            <input 
+                                pInputText 
+                                type="text" 
+                                (input)= "myTab3.filterGlobal($any($event.target).value, 'contains')"
+                                placeholder="Search keyword" />
+                        </p-iconField>
+                    </div>
+                </ng-template>
+            
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th >#</th>
+                        <th >First Name</th>
+                        <th >Last Name</th>
+                        <th >Phone</th>
+                        <th >Type Consultation</th>
+                        <th >Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-patient>
+                    <tr>
+                        <td>{{ patient.IDDOSSIERPATIENT }}</td>
+                        <td>{{ patient.NOMPATIENT }}</td>
+                        <td>{{ patient.PRENOMSPATIENT }}</td>
+                        <td>{{ patient.TELPATIENT }}</td>
+                        <td>{{ patient.PROFESSIONPATIENT }}</td>
+                        <td>
+                            <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consulter</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+           
+        </div>
+
+       
+   </div>
+
+<!-- footer -->
+<footer></footer>
+</main>
+
+

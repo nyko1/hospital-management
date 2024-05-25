@@ -17,7 +17,7 @@
         <div class="container-fluid card">
             <p-table 
             #myTab3  
-            [value]="products" 
+            [value]="patients" 
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="true"
             [rows]="5"
@@ -49,14 +49,14 @@
                         <th >Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-patient>
                     <tr>
-                        <td>{{ product.code }}</td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.category }}</td>
-                        <td>{{ product.quantity }}</td>
-                        <td>{{ product.price }}</td>
-                        <td>{{ product.inventoryStatus }}</td>
+                        <td>{{ patient.IDDOSSIERPATIENT }}</td>
+                        <td>{{ patient.NOMPATIENT }}</td>
+                        <td>{{ patient.PRENOMSPATIENT }}</td>
+                        <td>{{ patient.ADESSEPATIENT }}</td>
+                        <td>{{ patient.TELPATIENT }}</td>
+                        <td>{{ patient.PROFESSIONPATIENT }}</td>
                         <td>
                             <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consultation</button>
                         </td>
@@ -64,28 +64,29 @@
                 </ng-template>
             </p-table>
             <!-- Start Modal -->
-            <p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
+            <p-dialog [(visible)]="patientDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
                 styleClass="p-fluid">
                 <ng-template pTemplate="content">
                     <div class="field">
                         <label for="category">Consultation Type </label>
-                        <p-dropdown [(ngModel)]="product.category" inputId="category">
+                        <p-dropdown [(ngModel)]="patient" inputId="category">
                             <ng-template pTemplate="selectedItem">
-                                <p-tag [value]="product.category"/>
+                                <!-- [value]="patient.PRENOMSPATIENT" -->
+                                <p-tag />
                             </ng-template>
-                            <ng-template let-product pTemplate="item">
-                                <p-tag [value]="product.name"/>
+                            <ng-template let-patient pTemplate="item">
+                                <p-tag [value]="patient.name"/>
                             </ng-template>
                         </p-dropdown>
                     </div>
                     <div class="field">
                         <label for="Specialist">Specialist </label>
-                        <p-dropdown [(ngModel)]="product.category" inputId="specialist">
+                        <p-dropdown [(ngModel)]="patient" inputId="specialist">
                             <ng-template pTemplate="selectedItem">
-                                <p-tag [value]="product.category"/>
+                                <p-tag/>
                             </ng-template>
                             <ng-template let-product pTemplate="item">
-                                <p-tag [value]="product.name"/>
+                                <p-tag />
                             </ng-template>
                         </p-dropdown>
                     </div>
@@ -105,12 +106,5 @@
 
     <footer class="main-footer">© NykoGes Hospitals 2024</footer>
 
-    <!-- Data Tables -->
-		<script src="/src/assets/ui/params/vendor/datatables/dataTables.min.js"></script>
-		<script src="/src/assets/ui/params/vendor/datatables/dataTables.bootstrap.min.js"></script>
-		
-		<!-- Custom Data tables -->
-		<script src="/src/assets/ui/params/vendor/datatables/custom/custom-datatables.js"></script>
-		<script src="/src/assets/ui/params/vendor/datatables/custom/fixedHeader.js"></script>
 </main>
 

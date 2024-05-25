@@ -59,8 +59,8 @@
                         <td>{{ patient.PROFESSIONPATIENT }}</td>
                         <td>
                             
-                            <button type="button" style="margin-right: 10px;" (click)="openNew('Consultation Details')" class="btn btn-primary btn-sm">Consultation</button>
-                            <button type="button" class="btn btn-secondary btn-sm" (click)="openNew('Appointement Details')">RDV</button>
+                            <button type="button" style="margin-right: 10px;" (click)="openNew(patient.IDDOSSIERPATIENT, 'Consultation Details')" class="btn btn-primary btn-sm">Consultation</button>
+                            <button type="button" class="btn btn-secondary btn-sm" (click)="openNew(patient.IDDOSSIERPATIENT,'Appointement Details')">RDV</button>
                         </td>
                     </tr>
                 </ng-template>
@@ -99,7 +99,7 @@
         
             <ng-template pTemplate="footer">
                 <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()" />
-                <p-button pRipple label="Assign" icon="pi pi-check" [text]="true" />
+                <p-button pRipple label="Assign" icon="pi pi-check" [text]="true" (onClick)="onAssign()"/>
             </ng-template>
         </p-dialog>
     <!-- End Modal -->

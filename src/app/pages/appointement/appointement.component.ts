@@ -1,88 +1,76 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../service/productservice';
-import { Product } from '../../../domain/product';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { TableModule } from 'primeng/table';
-import { CommonModule } from '@angular/common';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { RippleModule } from 'primeng/ripple';
-import { ToastModule } from 'primeng/toast';
-import { ToolbarModule } from 'primeng/toolbar';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { RatingModule } from 'primeng/rating';
-import { RadioButtonModule } from 'primeng/radiobutton';
 import { TagModule } from 'primeng/tag';
-import { DropdownModule } from 'primeng/dropdown';
-import { FileUploadModule } from 'primeng/fileupload';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PatientService } from '../services/patient.service';
+
+import { CommonModule } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+
 
 @Component({
   selector: 'app-appointement',
   standalone: true,
-  providers: [ProductService],
+  providers: [
+    PatientService
+  ],
   imports: [
     RouterLink,
     HeaderComponent,
     TableModule, 
-    CommonModule,
     IconFieldModule,
     InputIconModule,
-    InputTextModule,
     FormsModule,
     ButtonModule,
-
-    
     DialogModule, 
-    RippleModule, 
-    ToastModule, 
-    ToolbarModule, 
-    ConfirmDialogModule, 
-    InputTextareaModule, 
-    FileUploadModule, 
-    DropdownModule, 
     TagModule, 
-    RadioButtonModule, 
-    RatingModule, 
-    InputNumberModule
+    TableModule, 
+      CommonModule,
+      IconFieldModule,
+      InputIconModule,
+      InputTextModule,
   ],
   templateUrl: './appointement.component.html',
 })
 export class AppointementComponent implements OnInit{
-  products!: Product[];
-  product!: Product;
+  patients!: any;
 
-  productDialog: boolean = false;
-  selectedProducts!: Product[] | null;
+  patientDialog: boolean = false;
+  selectedPatients!: string[]
 
   submitted: boolean = false;
 
   statuses!: any[];
   modalTitle: string | undefined
+  patient: {} | undefined;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private patientService: PatientService
+  ) {}
 
   ngOnInit() {
     
-      this.productService.getProducts().then((data) => {
-          this.products = data;
-      });
+      this.patientService.getPatients().subscribe(
+        data =>{
+          this.patients = data
+        }
+      )
   }
 
   openNew(title: string) {
-    this.product = {};
+    this.patient = {};
     this.submitted = false;
-    this.productDialog = true;
+    this.patientDialog = true;
     this.modalTitle = title
   }
   hideDialog() {
-    this.productDialog = false;
+    this.patientDialog = false;
     this.submitted = false;
   }
   

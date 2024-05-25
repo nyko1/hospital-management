@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { RouterLink } from '@angular/router';
 import { SpecialistService } from '../services/specialist.service';
-import { PatientService } from '../../../service/patient.service';
+import { PatientService } from '../services/patient.service';
 
 @Component({
   selector: 'app-reception',

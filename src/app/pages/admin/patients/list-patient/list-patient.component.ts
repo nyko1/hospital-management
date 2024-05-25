@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { HeaderComponent } from '.././../header/header.component';
 
 
-import { ProductService } from '../../../../../service/productservice';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { IconFieldModule } from 'primeng/iconfield';
@@ -15,7 +14,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { PatientService } from '../../../../../service/patient.service';
+import { PatientService } from '../../../services/patient.service';
 
 
 @Component({

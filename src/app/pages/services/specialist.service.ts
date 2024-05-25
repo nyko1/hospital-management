@@ -55,6 +55,11 @@ export class SpecialistService {
     return this.http.get<any>(`${this.apiUrl}/list-specialist/${speciality}`);
   }
 
+  getSpecialities(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/list-specialities`);
+  }
+
+
 
 }
 

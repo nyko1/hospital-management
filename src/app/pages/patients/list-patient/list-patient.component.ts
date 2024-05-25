@@ -3,8 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../header/header.component';
 
 
-import { Product } from '../../../../domain/product';
-import { ProductService } from '../../../../service/productservice';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { IconFieldModule } from 'primeng/iconfield';
@@ -27,14 +25,15 @@ import { TagModule } from 'primeng/tag';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
 import { MessageService } from 'primeng/api';
-import { PatientService } from '../../../../service/patient.service';
+import { PatientService } from '../../services/patient.service';
 import { SpecialistService } from '../../services/specialist.service';
+import { ConsultationService } from '../../services/consultation.service';
+import { Consultation } from '../../models/consultation.model';
 
 @Component({
   selector: 'app-list-patient',
   standalone: true,
   providers: [
-    ProductService,
     SpecialistService
   ],
   imports: [
@@ -76,26 +75,38 @@ export class ListPatientComponent  implements OnInit{
   consultationDialog: boolean = false;
 
   submitted: boolean = false;
-
+  consultations?: Consultation
   statuses!: any[];
   modalTitle: string | undefined
   displayModal: boolean = false;
   patients: any;
-  idPatient: string | undefined
+  idPatient: string = ""
   specialite: {} | undefined;
   specilists: any;
   specialities: any[] = [];
-  specialist: any[] = [];
+  //specialist: any[] = [];
   filteredSpecialists: any[] = []; // Array to hold filtered specialists
 
   constructor(
     private router: Router,
     //private messageService: MessageService,
     private patientService: PatientService,
-    private specialistService: SpecialistService
+    private specialistService: SpecialistService,
+    private consultationService: ConsultationService
   ) {}
 
   ngOnInit() {
+
+    this.consultations = {
+      IDCONSULTATION: '',
+      IDDOSSIERPATIENT: '',
+      TYPECONSULTATION: '', // Optional fields
+      DATECONSULTATION: '',
+      DIAGNOSTIC: '',
+      ACTEMEDICAL: '',
+      PRESCRIPTION: '',
+      CONSTANTE: ''
+    };
     
     this.patientService.getPatients()
     .subscribe((data) => {
@@ -125,11 +136,26 @@ export class ListPatientComponent  implements OnInit{
 
   }
 
-  openNew(title: string) {
+  generateIdConsultation(): string {
+    const now = new Date();
+    const datePart = now.toISOString().replace(/[-:.TZ]/g, '').slice(2, 8); // Use 6 characters from date
+    const uniquePart = Math.random().toString(36).substring(2, 11).toUpperCase(); // Use 9 characters for uniqueness
+    
+    // Combine parts and ensure the total length does not exceed 15 characters
+    let generatedId = `${datePart}${uniquePart}`;
+    if (generatedId.length > 15) {
+        generatedId = generatedId.substring(0, 15);
+    }
+    return generatedId;
+  }
+
+
+  openNew(id:string, title: string) {
     this.specialite = {};
     this.submitted = false;
     this.consultationDialog = true;
     this.modalTitle = title
+    this.idPatient = id
   }
   hideDialog() {
     this.consultationDialog = false;
@@ -148,6 +174,40 @@ export class ListPatientComponent  implements OnInit{
     });
   }
 
+  
+  formatDateToString(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
 
+  onAssign(): void {
+    if (this.consultations) {
+      this.consultations.IDDOSSIERPATIENT = this.idPatient;
+      this.consultations.IDCONSULTATION = this.generateIdConsultation();
+      this.consultations.DATECONSULTATION = this.formatDateToString(new Date());
+      
+      console.log("consultation: ", this.consultations);
+      
+      this.consultationService.createConsultation(this.consultations).subscribe(
+        (data) => {
+          console.log("Create Successfully");
+          console.log(data);
+          
+          this.filteredSpecialists = [];
+          this.consultationDialog = false;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.log("consultation empty");
+    }
+  }
   
 }

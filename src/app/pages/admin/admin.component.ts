@@ -3,7 +3,7 @@ import { HeaderComponent } from "./header/header.component";
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from "../footer/footer.component";
 import { SpecialistService } from '../services/specialist.service';
-import { PatientService } from '../../../service/patient.service';
+import { PatientService } from '../services/patient.service';
 import { response } from 'express';
 
 @Component({
