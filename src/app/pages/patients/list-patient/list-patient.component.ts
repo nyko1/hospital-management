@@ -28,11 +28,15 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
 import { MessageService } from 'primeng/api';
 import { PatientService } from '../../../../service/patient.service';
+import { SpecialistService } from '../../services/specialist.service';
 
 @Component({
   selector: 'app-list-patient',
   standalone: true,
-  providers: [ProductService],
+  providers: [
+    ProductService,
+    SpecialistService
+  ],
   imports: [
     RouterLink,
     HeaderComponent,
@@ -69,8 +73,7 @@ import { PatientService } from '../../../../service/patient.service';
 })
 export class ListPatientComponent  implements OnInit{
 
-  productDialog: boolean = false;
-  selectedProducts!: Product[] | null;
+  consultationDialog: boolean = false;
 
   submitted: boolean = false;
 
@@ -79,20 +82,24 @@ export class ListPatientComponent  implements OnInit{
   displayModal: boolean = false;
   patients: any;
   idPatient: string | undefined
-  patient: {} | undefined;
+  specialite: {} | undefined;
+  specilists: any;
+  specialities: any[] = [];
+  specialist: any[] = [];
+  filteredSpecialists: any[] = []; // Array to hold filtered specialists
 
   constructor(
-    private productService: ProductService,
     private router: Router,
     //private messageService: MessageService,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private specialistService: SpecialistService
   ) {}
 
   ngOnInit() {
     
-      this.patientService.getPatients()
-      .subscribe((data) => {
-        this.patients = data;
+    this.patientService.getPatients()
+    .subscribe((data) => {
+      this.patients = data;
         
     },
     error =>{
@@ -100,17 +107,47 @@ export class ListPatientComponent  implements OnInit{
       
     }
   );
+
+  this.specialistService.getSpecialists()
+    .subscribe((data) => {
+      console.log(data);
+      this.specilists = data[0];
+      this.specialities = data.map((specialist: any) => specialist.SPECIALITE); // Extract specialities
+      //console.log(this.specialities);
+      
+        
+    },
+    error =>{
+      console.error(error);
+      
+    }
+  );
+
   }
 
   openNew(title: string) {
-    this.patient = {};
+    this.specialite = {};
     this.submitted = false;
-    this.productDialog = true;
+    this.consultationDialog = true;
     this.modalTitle = title
   }
   hideDialog() {
-    this.productDialog = false;
+    this.consultationDialog = false;
     this.submitted = false;
+    this.filteredSpecialists = []
   }
+
+  onSpecialityChange(event: any) {
+    const selectedSpecialite = event.value;
+    this.specialistService.getSpecialistsBySpeciality(selectedSpecialite).subscribe((data) => {
+      this.filteredSpecialists = data.map((specialiste: any) => specialiste.PRENOMSPECIALISTE);
+      console.log(this.filteredSpecialists);
+    },
+    error => {
+      console.error(error);
+    });
+  }
+
+
   
 }

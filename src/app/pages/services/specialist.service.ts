@@ -2,6 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+export interface Specialist {
+  idspecialiste: string;
+  nomspecialiste: string;
+  prenomspecialiste: string;
+  specialite: string;
+  gradespecialiste: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +49,10 @@ export class SpecialistService {
 
   deleteSpecialist(idspecialiste: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/delete-specialist/${idspecialiste}`);
+  }
+
+  getSpecialistsBySpeciality(speciality: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/list-specialist/${speciality}`);
   }
 
 
