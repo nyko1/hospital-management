@@ -73,7 +73,7 @@
             <ng-template pTemplate="content">
                 <div class="field" [style]="{ height: '150px' }">
                     <label for="specialite">Consultation Type </label>
-                    <p-dropdown [options]="specialities" [(ngModel)]="specialite" inputId="specialite"
+                    <p-dropdown [options]="specialities" [(ngModel)]="consultationType" inputId="specialite"
                         (onChange)="onSpecialityChange($event)">
                         <ng-template let-speciality pTemplate="selectedItem">
                             <p-tag [value]="speciality" />

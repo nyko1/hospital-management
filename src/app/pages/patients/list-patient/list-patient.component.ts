@@ -84,7 +84,7 @@ export class ListPatientComponent  implements OnInit{
   specialite: {} | undefined;
   specilists: any;
   specialities: any[] = [];
-  //specialist: any[] = [];
+  consultationType: any
   filteredSpecialists: any[] = []; // Array to hold filtered specialists
 
   constructor(
@@ -121,7 +121,7 @@ export class ListPatientComponent  implements OnInit{
 
   this.specialistService.getSpecialists()
     .subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.specilists = data[0];
       this.specialities = data.map((specialist: any) => specialist.SPECIALITE); // Extract specialities
       //console.log(this.specialities);
@@ -167,7 +167,7 @@ export class ListPatientComponent  implements OnInit{
     const selectedSpecialite = event.value;
     this.specialistService.getSpecialistsBySpeciality(selectedSpecialite).subscribe((data) => {
       this.filteredSpecialists = data.map((specialiste: any) => specialiste.PRENOMSPECIALISTE);
-      console.log(this.filteredSpecialists);
+      //console.log(this.filteredSpecialists);
     },
     error => {
       console.error(error);
@@ -190,13 +190,13 @@ export class ListPatientComponent  implements OnInit{
       this.consultations.IDDOSSIERPATIENT = this.idPatient;
       this.consultations.IDCONSULTATION = this.generateIdConsultation();
       this.consultations.DATECONSULTATION = this.formatDateToString(new Date());
-      
-      console.log("consultation: ", this.consultations);
+      this.consultations.TYPECONSULTATION = this.consultationType
+      //console.log("consultation: ", this.consultations);
       
       this.consultationService.createConsultation(this.consultations).subscribe(
         (data) => {
           console.log("Create Successfully");
-          console.log(data);
+          //console.log(data);
           
           this.filteredSpecialists = [];
           this.consultationDialog = false;

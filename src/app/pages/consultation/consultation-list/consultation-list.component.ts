@@ -47,11 +47,11 @@ export class ConsultationListComponent implements OnInit {
     this.patientService.getPatients().subscribe(
       data => {
         this.patients = data;
-        console.log('Patients:', this.patients);
+        //console.log('Patients:', this.patients);
         this.consultationService.getConsultations().subscribe(
           data => {
             this.consultations = data;
-            console.log('Consultations:', this.consultations);
+            //console.log('Consultations:', this.consultations);
             this.filterTodayConsultations();
           }
         );
@@ -73,6 +73,6 @@ export class ConsultationListComponent implements OnInit {
         };
       });
     
-    console.log('Today Consultations:', this.todayConsultations);
+   // console.log('Today Consultations:', this.todayConsultations);
   }
 }
