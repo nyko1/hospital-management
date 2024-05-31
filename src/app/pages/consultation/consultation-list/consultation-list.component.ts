@@ -71,7 +71,11 @@ export class ConsultationListComponent implements OnInit {
           patientSurname: patient ? patient.PRENOMSPATIENT : '',
           patientTel: patient ? patient.TELPATIENT : ''
         };
-      });
+      }).sort((a, b)=>{
+        const dateA = new Date(a.DATECONSULTATION!).getTime()
+        const dateB = new Date(b.DATECONSULTATION!).getTime()
+        return dateA - dateB
+      })
     
    // console.log('Today Consultations:', this.todayConsultations);
   }

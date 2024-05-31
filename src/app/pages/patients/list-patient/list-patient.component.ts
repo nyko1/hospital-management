@@ -100,6 +100,7 @@ export class ListPatientComponent  implements OnInit{
     this.consultations = {
       IDCONSULTATION: '',
       IDDOSSIERPATIENT: '',
+      STATUT:'',
       TYPECONSULTATION: '', // Optional fields
       DATECONSULTATION: '',
       DIAGNOSTIC: '',
@@ -122,7 +123,7 @@ export class ListPatientComponent  implements OnInit{
   this.specialistService.getSpecialists()
     .subscribe((data) => {
       //console.log(data);
-      this.specilists = data[0];
+      this.specilists = data;
       this.specialities = data.map((specialist: any) => specialist.SPECIALITE); // Extract specialities
       //console.log(this.specialities);
       
@@ -190,7 +191,7 @@ export class ListPatientComponent  implements OnInit{
       this.consultations.IDDOSSIERPATIENT = this.idPatient;
       this.consultations.IDCONSULTATION = this.generateIdConsultation();
       this.consultations.DATECONSULTATION = this.formatDateToString(new Date());
-      this.consultations.TYPECONSULTATION = this.consultationType
+      this.consultations.TYPECONSULTATION = this.consultationType.toUpperCase()
       //console.log("consultation: ", this.consultations);
       
       this.consultationService.createConsultation(this.consultations).subscribe(
