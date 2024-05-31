@@ -19,6 +19,21 @@ const routes: Routes = [
     loadChildren: () => import('../specialist/consultation/consultation.module')
       .then(mod => mod.ConsultationModule)
   },
+  {
+    path: 'consultation-list',
+    loadComponent: () => import('../consultation/consultation-list/consultation-list.component')
+      .then(mod => mod.ConsultationListComponent)
+  },
+  {
+    path: 'consultation-pending',
+    loadComponent: () => import('../consultation/consultation-pending/consultation-pending.component')
+      .then(mod => mod.ConsultationPendingComponent)
+  },
+  {
+    path: 'consultation-completed',
+    loadComponent: () => import('../consultation/consultation-completed/consultation-completed.component')
+      .then(mod => mod.ConsultationCompletedComponent)
+  },
 
 ];
 

@@ -37,6 +37,8 @@ export class ConsultationListComponent implements OnInit {
   patients: any[] = [];
   consultations: Consultation[] = [];
   todayConsultations: any[] = [];
+  userRole: string | null = localStorage.getItem('role')
+
 
   constructor(
     private patientService: PatientService,
