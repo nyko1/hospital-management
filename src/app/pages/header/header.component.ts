@@ -15,6 +15,7 @@ import { Location } from '@angular/common';
 export class HeaderComponent implements OnInit{
     userInfo: any;
     specialist: any;
+    userRole: string | null = localStorage.getItem('role')
 
     constructor(
         private authService: AuthService, 
@@ -55,6 +56,14 @@ export class HeaderComponent implements OnInit{
       }
 
     goBack(){
-        this.location.back()
+        switch (this.userRole) {
+            case "reception":
+            case "receptionniste":
+                this.router.navigate(['reception'])
+                break;
+            default:
+                this.router.navigate(['/specialist'])
+                break;
+        }
     }
 }
