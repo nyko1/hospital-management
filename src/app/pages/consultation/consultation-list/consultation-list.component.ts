@@ -64,9 +64,9 @@ export class ConsultationListComponent implements OnInit {
   filterTodayConsultations(): void {
     const today = new Date().toISOString().split('T')[0];
     this.todayConsultations = this.consultations
-      .filter(consultation => consultation.DATECONSULTATION!.startsWith(today))
+      .filter(consultation => consultation.DATECONSULTATION!.startsWith(today) && consultation.STATUT !== "OK")
       .map(consultation => {
-        const patient = this.patients.find((patient: { IDDOSSIERPATIENT: string; }) => patient.IDDOSSIERPATIENT === consultation.IDDOSSIERPATIENT);
+        const patient = this.patients.find((patient: { IDDOSSIERPATIENT: string; }) => patient.IDDOSSIERPATIENT === consultation.IDDOSSIERPATIENT );
         return {
           ...consultation,
           ...patient

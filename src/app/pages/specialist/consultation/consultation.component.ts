@@ -27,7 +27,8 @@ export class ConsultationComponent implements OnInit {
     constructor(
       private patientService: PatientService,
       private consultationService: ConsultationService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private location: Location
     ){}
 
     ngOnInit(): void {
@@ -58,6 +59,8 @@ export class ConsultationComponent implements OnInit {
             this.patientService.getPatient(idPatient!)
         .subscribe(
           data =>{
+            const [heightValue, weightValue, temperatureValue] = res.CONSTANTE!.split("/"); 
+            
             this.consultationForm?.patchValue(
               {
                 cslID : res.IDCONSULTATION,
@@ -70,7 +73,11 @@ export class ConsultationComponent implements OnInit {
                 address: data.ADRESSEPATIENT,
                 job: data.PROFESSIONPATIENT,
                 sanguinGrp: data.GROUPESANGUIN,
-                patientHistory: data.ANTECEDENTPATIENT
+                patientHistory: data.ANTECEDENTPATIENT,
+                height: heightValue,
+                weight: weightValue,
+                temperature: temperatureValue,
+                diagnostic: res.DIAGNOSTIC
               }
             )
           },
@@ -100,7 +107,7 @@ export class ConsultationComponent implements OnInit {
       this.consultationService.updateConsultation(this.idConsultation!, this.consultationForm?.value).subscribe(
         () => {
           console.log("Consultation Ok");
-          Location
+          this.goToBackPage()
           
         },
         (error) => {
@@ -108,6 +115,10 @@ export class ConsultationComponent implements OnInit {
         }
       );
     }
+  }
+
+  goToBackPage(){
+    this.location.back();
   }
 
 }
