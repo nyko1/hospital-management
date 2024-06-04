@@ -21,7 +21,7 @@
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="true"
             [rows]="5"
-            [globalFilterFields]="['name', 'code', 'category']"
+            [globalFilterFields]="['NOMPATIENT', 'PRENOMSPATIENT', 'TELPATIENT']"
             [rowsPerPageOptions]="[5,10,15,20]"
               
             >
@@ -52,16 +52,20 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-toDayConsultation let-i="rowIndex">
                     <tr>
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ toDayConsultation.NOMPATIENT }}</td>
-                        <td>{{ toDayConsultation.PRENOMSPATIENT }}</td>
-                        <td>{{ toDayConsultation.TELPATIENT }}</td>
-                        <td>{{ toDayConsultation.TYPECONSULTATION }}</td>
-                        @if (userRole != "reception" && userRole != "receptionniste" && userRole != "admin") {
-                            <td>
-                                <button type="button" style="margin-right: 10px;" [routerLink]="['/specialist/consultation/', toDayConsultation.IDCONSULTATION]" class="btn btn-primary btn-sm">Consulter</button>
-                            </td>
+                        @if (userRole?.toUpperCase() === toDayConsultation.TYPECONSULTATION.toUpperCase()) {
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ toDayConsultation.NOMPATIENT }}</td>
+                            <td>{{ toDayConsultation.PRENOMSPATIENT }}</td>
+                            <td>{{ toDayConsultation.TELPATIENT }}</td>
+                            <td>{{ toDayConsultation.TYPECONSULTATION }}</td>
+                            @if (userRole != "reception" && userRole != "receptionniste" && userRole != "admin") {
+                                <td>
+                                    <button type="button" style="margin-right: 10px;" [routerLink]="['/specialist/consultation/', toDayConsultation.IDCONSULTATION]" class="btn btn-primary btn-sm">Consulter</button>
+                                </td>
+                            }
                         }
+                        
+                        
                         
                     </tr>
                 </ng-template>
