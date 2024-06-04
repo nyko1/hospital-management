@@ -22,17 +22,17 @@ export class ConsultationService {
     return this.http.get<Consultation[]>(this.apiUrl);
   }
 
-  getConsultation(id: number): Observable<Consultation> {
-    return this.http.get<Consultation>(`${this.apiUrl}/${id}`);
+  getConsultation(id: string): Observable<Consultation> {
+    return this.http.get<Consultation>(`${this.apiUrl}/consultation/${id}`);
   }
 
   // Update
-  updateConsultation(id: number, consultation: Consultation): Observable<Consultation> {
-    return this.http.put<Consultation>(`${this.apiUrl}/${id}`, consultation);
+  updateConsultation(id: string, consultation: Consultation): Observable<Consultation> {
+    return this.http.put<Consultation>(`${this.apiUrl}/update-consultation/${id}`, consultation);
   }
 
   // Delete
-  deleteConsultation(id: number): Observable<void> {
+  deleteConsultation(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

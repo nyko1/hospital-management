@@ -59,7 +59,7 @@
                         <td>{{ toDayConsultation.TYPECONSULTATION }}</td>
                         @if (userRole != "reception" && userRole != "receptionniste" && userRole != "admin") {
                             <td>
-                                <button type="button" style="margin-right: 10px;" [routerLink]="['/specialist/consultation/', toDayConsultation.IDDOSSIERPATIENT]" class="btn btn-primary btn-sm">Consulter</button>
+                                <button type="button" style="margin-right: 10px;" [routerLink]="['/specialist/consultation/', toDayConsultation.IDCONSULTATION]" class="btn btn-primary btn-sm">Consulter</button>
                             </td>
                         }
                         

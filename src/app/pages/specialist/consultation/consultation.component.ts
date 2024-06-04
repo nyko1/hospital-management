@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PatientService } from '../../services/patient.service';
 import { ConsultationService } from '../../services/consultation.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-consultation',
@@ -21,6 +22,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ConsultationComponent implements OnInit {
     
     consultationForm: FormGroup | undefined;
+    idConsultation: string | null | undefined
 
     constructor(
       private patientService: PatientService,
@@ -30,6 +32,7 @@ export class ConsultationComponent implements OnInit {
 
     ngOnInit(): void {
         this.consultationForm = new FormGroup({
+          cslID: new FormControl(''),
           patID: new FormControl({value: '', disabled: true}),
           firstName: new FormControl({value: '', disabled: true}),
           lastName: new FormControl({value: '', disabled: true}),
@@ -39,21 +42,25 @@ export class ConsultationComponent implements OnInit {
           address: new FormControl({value: '', disabled: true}),
           job: new FormControl({value: '', disabled: true}),
           sanguinGrp: new FormControl({value: '', disabled: true}),
+          statut: new FormControl(''),
           patientHistory: new FormControl(''),
-          height: new FormControl(['', Validators.required]),
-          weight: new FormControl(['', Validators.required]),
-          temperature: new FormControl(['', Validators.required]),
-          diagnostic: new FormControl(['', Validators.required]),
+          height: new FormControl(''),
+          weight: new FormControl(''),
+          temperature: new FormControl(''),
+          diagnostic: new FormControl(''),
           inputRdv: new FormControl('')
         });
 
-        const idPatient = this.route.snapshot.paramMap.get('id')
-
-        this.patientService.getPatient(idPatient!)
+        this.idConsultation = this.route.snapshot.paramMap.get('id')
+        this.consultationService.getConsultation(this.idConsultation!).subscribe(
+          res =>{
+            const idPatient = res.IDDOSSIERPATIENT
+            this.patientService.getPatient(idPatient!)
         .subscribe(
           data =>{
             this.consultationForm?.patchValue(
               {
+                cslID : res.IDCONSULTATION,
                 patID: data.IDDOSSIERPATIENT,
                 firstName: data.PRENOMSPATIENT,
                 lastName: data.NOMPATIENT,
@@ -72,10 +79,35 @@ export class ConsultationComponent implements OnInit {
             
           }
         )
+          },
+          err =>{
+            console.error(err);
+            
+          }
+        )
+
+        
+        //this.consultationService.updateConsultation()
       }
+
+
+
       
-    onSubmit() {
-    
+    onSubmit(): void {
+    if (this.consultationForm!.valid) {
+      //console.log(this.consultationForm?.value);
+      
+      this.consultationService.updateConsultation(this.idConsultation!, this.consultationForm?.value).subscribe(
+        () => {
+          console.log("Consultation Ok");
+          Location
+          
+        },
+        (error) => {
+          console.error('There was an error!', error);
+        }
+      );
     }
+  }
 
 }
