@@ -53,13 +53,13 @@
                 <ng-template pTemplate="body" let-toDayConsultation let-i="rowIndex">
                     <tr>
                         <td>{{ i + 1 }}</td>
-                        <td>{{ toDayConsultation.patientName }}</td>
-                        <td>{{ toDayConsultation.patientSurname }}</td>
-                        <td>{{ toDayConsultation.patientTel }}</td>
+                        <td>{{ toDayConsultation.NOMPATIENT }}</td>
+                        <td>{{ toDayConsultation.PRENOMSPATIENT }}</td>
+                        <td>{{ toDayConsultation.TELPATIENT }}</td>
                         <td>{{ toDayConsultation.TYPECONSULTATION }}</td>
                         @if (userRole != "reception" && userRole != "receptionniste" && userRole != "admin") {
                             <td>
-                                <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consulter</button>
+                                <button type="button" style="margin-right: 10px;" [routerLink]="['/specialist/consultation/', toDayConsultation.IDDOSSIERPATIENT]" class="btn btn-primary btn-sm">Consulter</button>
                             </td>
                         }
                         

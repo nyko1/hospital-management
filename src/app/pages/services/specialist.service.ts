@@ -26,7 +26,7 @@ export class SpecialistService {
   }
 
   getSpecialists(): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/list-specialist`)
+    return this.http.get<any>(`${this.apiUrl}/list-specialists`)
   }
   getAllSpecialists(): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/list-specialist`)

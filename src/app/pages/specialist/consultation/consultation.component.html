@@ -31,131 +31,139 @@
                             <div class="card-title">Consultation Details</div>
                         </div>
                         <div class="card-body">
-                            <div class="row gutters">
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="patID">Create ID</label>
-                                        <input type="text" class="form-control" id="patID" placeholder="ID" readonly>
+                            <form [formGroup]="consultationForm!" (ngSubmit)="onSubmit()">
+                                <div class="row gutters">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="patID">Create ID</label>
+                                            <input formControlName="patID" type="text" class="form-control" id="patID" placeholder="ID" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="fullName">First Name</label>
-                                        <input type="text" class="form-control" id="fullName" placeholder="Srinu" readonly>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" formControlName="firstName" class="form-control" id="fullName" placeholder="Srinu" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="fullName">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="Srinu" readonly>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Srinu" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="agE">Birthday</label>
-                                        <input type="date" class="form-control" id="agE" readonly>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="agE">Birthday</label>
+                                            <input type="date" formControlName="agE" class="form-control" id="agE" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="phoNe">Phone</label>
-                                        <input type="text" class="form-control" id="phoNe" placeholder="Phone" readonly>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="Phone">Phone</label>
+                                            <input type="text" class="form-control" formControlName="Phone" id="Phone" placeholder="Phone" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="inputEmail">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail"
-                                            placeholder="medical@bm.com" readonly>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="inputEmail">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail"
+                                                formControlName ="email"
+                                                placeholder="medical@bm.com" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="addreSs">Current Address</label>
-                                        <input class="form-control" id="addreSs"
-                                            placeholder="Current Address" readonly>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="addreSs">Current Address</label>
+                                            <input class="form-control" id="address"
+                                                formControlName="address"
+                                                placeholder="Current Address" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="job">Patient Job</label>
-                                        <input class="form-control" id="job"
-                                            placeholder="Current job" readonly>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="job">Patient Job</label>
+                                            <input class="form-control" id="job"
+                                                formControlName="job"
+                                                placeholder="Current job" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="sanguinGrp">Sanguin Group</label>
-                                        <select 
-                                        aria-controls="sanguinGrp" class="form-control form-control-sm selectpicker" readonly>
-                                        <option value=""></option>
-                                        <option value="O+">O+</option>
-                                        <option value="O-">O-</option>
-                                        <option value="AB+">AB+</option>
-                                        <option value="AB-">AB-</option>
-                                        <option value="A-">A-</option>
-                                        <option value="A+">A+</option>
-                                        <option value="B-">B-</option>
-                                        <option value="B+">B+</option>
-                                    </select> 
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="sanguinGrp">Sanguin Group</label>
+                                            <select 
+                                            aria-controls="sanguinGrp" formControlName="sanguinGrp" class="form-control form-control-sm selectpicker" readonly>
+                                            <option value=""></option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="A-">A-</option>
+                                            <option value="A+">A+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="B+">B+</option>
+                                        </select> 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="biO">Patient History</label>
-                                        <textarea class="form-control" id="biO"
-                                            placeholder="Patient History"></textarea>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="biO">Patient History</label>
+                                            <textarea class="form-control" id="biO"
+                                                formControlName="patientHistory"
+                                                placeholder="Patient History"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="inputHeight">Height</label>
-                                        <input type="number" class="form-control" id="inputHeight"
-                                            placeholder="1.76cm">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="inputHeight">Height</label>
+                                            <input type="number" class="form-control" id="inputHeight"
+                                                formControlName="height"
+                                                placeholder="1.76cm">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="inputWeight">Weight</label>
-                                        <input type="text" class="form-control" id="inputWeight"
-                                            placeholder="65 KG">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="inputWeight">Weight</label>
+                                            <input type="text" class="form-control" id="inputWeight"
+                                                formControlName="weight"
+                                                placeholder="65 KG">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="inputTemperature">Temperature</label>
-                                        <input type="number" class="form-control" id="inputTemperature"
-                                            placeholder="37">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="inputTemperature">Temperature</label>
+                                            <input type="number" class="form-control" id="inputTemperature"
+                                                formControlName="temperature"
+                                                placeholder="37">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="diagnostic">Diagnostic</label>
-                                        <textarea placeholder="Diagnostic " class="form-control" id="diagnostic"
-                                            ></textarea>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="diagnostic">Diagnostic</label>
+                                            <textarea placeholder="Diagnostic " formControlName="diagnostic" class="form-control" id="diagnostic"
+                                                ></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="Exam">Exam </label>
-                                        <textarea class="form-control" id="biO"
-                                            placeholder="Exam "></textarea>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="text-right">
+                                            <button class="btn btn-primary">Exam</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="inputRdv">Appointment</label>
-                                        <input type="date" class="form-control" id="inputRdv"
-                                            placeholder="37">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="inputRdv">Appointment</label>
+                                            <input type="date" class="form-control" id="inputRdv"
+                                                formControlName="appointment"
+                                                placeholder="37">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="text-right">
-                                        <button class="btn btn-primary">Create Consultation</button>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+                                            <button class="btn btn-primary">Create Consultation</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

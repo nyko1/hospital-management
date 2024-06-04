@@ -19,7 +19,8 @@ import { MessageService } from 'primeng/api';
       ToastModule
     ],
     providers:[
-      PatientService
+      PatientService,
+      MessageService
     ]
 })
 export class EditPatientComponent implements OnInit{
@@ -32,7 +33,7 @@ export class EditPatientComponent implements OnInit{
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    //private messageService: MessageService,
+    private messageService: MessageService,
     private patientService: PatientService
     
   ){}
@@ -58,7 +59,7 @@ export class EditPatientComponent implements OnInit{
     this.patientService.getPatient(this.idPatient!)
     .subscribe(
       data => {
-        console.log('get: ', data);
+        //console.log('get: ', data);
         
         this.patientForm!.patchValue(
           {IDDOSSIERPATIENT: data.IDDOSSIERPATIENT,
@@ -67,8 +68,8 @@ export class EditPatientComponent implements OnInit{
           DATENAISSPATIENT: data.DATENAISSPATIENT,
           ADRESSEPATIENT: data.ADRESSEPATIENT,
           TELPATIENT: data.TELPATIENT,
-          EMAILPATIENT: data.PROFESSIONPATIENT,
-          PROFESSIONPATIENT: data,
+          EMAILPATIENT: data.EMAILPATIENT,
+          PROFESSIONPATIENT: data.PROFESSIONPATIENT,
           ANTECEDENTPATIENT: data.ANTECEDENTPATIENT,
           GROUPESANGUIN: data.GROUPESANGUIN
         }
@@ -100,6 +101,32 @@ export class EditPatientComponent implements OnInit{
   }
 
   editPatient(){
-
+    const formValues = this.patientForm!.value
+    const id = this.route.snapshot.paramMap.get('id');
+    this.patientService.updatePatient(
+      id!, 
+      formValues
+    ).subscribe(
+      res =>{
+        this.show()
+        setTimeout(() => {
+          this.goToBackPage();
+        }, 3000);
+      },
+      err =>{
+        this.showError()
+      }
+    )
   }
+
+
+  show() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Edit Succefuly' });
+  }
+
+  showError() {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error Edit' });
+  }
+
+
 }

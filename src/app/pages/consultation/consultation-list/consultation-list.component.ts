@@ -69,9 +69,10 @@ export class ConsultationListComponent implements OnInit {
         const patient = this.patients.find((patient: { IDDOSSIERPATIENT: string; }) => patient.IDDOSSIERPATIENT === consultation.IDDOSSIERPATIENT);
         return {
           ...consultation,
-          patientName: patient ? patient.NOMPATIENT : '',
-          patientSurname: patient ? patient.PRENOMSPATIENT : '',
-          patientTel: patient ? patient.TELPATIENT : ''
+          ...patient
+          // patientName: patient ? patient.NOMPATIENT : '',
+          // patientSurname: patient ? patient.PRENOMSPATIENT : '',
+          // patientTel: patient ? patient.TELPATIENT : ''
         };
       }).sort((a, b)=>{
         const dateA = new Date(a.DATECONSULTATION!).getTime()

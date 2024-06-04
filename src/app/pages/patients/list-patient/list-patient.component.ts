@@ -34,7 +34,8 @@ import { Consultation } from '../../models/consultation.model';
   selector: 'app-list-patient',
   standalone: true,
   providers: [
-    SpecialistService
+    SpecialistService,
+    MessageService
   ],
   imports: [
     RouterLink,
@@ -89,7 +90,7 @@ export class ListPatientComponent  implements OnInit{
 
   constructor(
     private router: Router,
-    //private messageService: MessageService,
+    private messageService: MessageService,
     private patientService: PatientService,
     private specialistService: SpecialistService,
     private consultationService: ConsultationService
@@ -201,14 +202,24 @@ export class ListPatientComponent  implements OnInit{
           
           this.filteredSpecialists = [];
           this.consultationDialog = false;
+          this.show()
         },
         error => {
           console.error(error);
+          this.showError()
         }
       );
     } else {
       console.log("consultation empty");
     }
+  }
+
+  show() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Add Consultation Succefuly' });
+  }
+
+  showError() {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error Add Consultation' });
   }
   
 }

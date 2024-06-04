@@ -15,7 +15,7 @@ const routes: Routes = [
       .then(mod => mod.AppointementModule)
   },
   {
-    path: 'consultation',
+    path: 'consultation/:id',
     loadChildren: () => import('../specialist/consultation/consultation.module')
       .then(mod => mod.ConsultationModule)
   },
