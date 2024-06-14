@@ -10,15 +10,20 @@ import { DialogModule } from 'primeng/dialog';
 import { TagModule } from 'primeng/tag';
 import { PatientService } from '../services/patient.service';
 
+
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
+import { ConsultationService } from '../services/consultation.service';
+import { Consultation } from '../models/consultation.model';
+import { DateUtil } from '../utils/date-util';
 
 
 @Component({
   selector: 'app-appointement',
   standalone: true,
   providers: [
-    PatientService
+    PatientService,
+    ConsultationService
   ],
   imports: [
     RouterLink,
@@ -35,11 +40,13 @@ import { InputTextModule } from 'primeng/inputtext';
       IconFieldModule,
       InputIconModule,
       InputTextModule,
+      
   ],
   templateUrl: './appointement.component.html',
 })
 export class AppointementComponent implements OnInit{
-  patients!: any;
+  patients: any[] =[];
+  consultations?: Consultation[];
 
   patientDialog: boolean = false;
   selectedPatients!: string[]
@@ -51,16 +58,55 @@ export class AppointementComponent implements OnInit{
   patient: {} | undefined;
 
   constructor(
-    private patientService: PatientService
+    private patientService: PatientService,
+    private consultationService: ConsultationService
   ) {}
 
   ngOnInit() {
     
-      this.patientService.getPatients().subscribe(
-        data =>{
-          this.patients = data
+      this.consultationService.getAppointement().subscribe({
+        next: (result) =>{
+          this.consultations = result;
+          
+          this.patientService.getPatients().subscribe({
+            next:  (data) =>{
+              this.patients = data
+               // Associer chaque consultation avec le nom du patient correspondant
+              this.consultations = this.consultations?.map(consultation => {
+                const patient = this.patients.find(p => p.IDDOSSIERPATIENT === consultation.IDDOSSIERPATIENT);
+                const date = DateUtil.formatDate(consultation.DATERDV!)
+                return {
+                  ...consultation,
+                  date,
+                    patientDetails: patient ? {
+                      firstName: patient.PRENOMSPATIENT,
+                      lastName: patient.NOMPATIENT,
+                      fullName: `${patient.PRENOMSPATIENT} ${patient.NOMPATIENT}`,
+                      age: patient.DATENAISSPATIENT,
+                      phone: patient.TELPATIENT,
+                      address: patient.ADRESSEPATIENT,
+                      job: patient.PROFESSIONPATIENT,
+                      sanguinGrp: patient.GROUPESANGUIN,
+                    } : null
+                };
+              });
+              //console.log('List of consultations with patient details:', this.consultations);
+            }
+          })
+          console.log('list',this.consultations);
+          
+          
+        },
+        error: (err) =>{
+          console.log(err);
+          
+        },
+        complete:()=>{
+          console.log('Completed');
+          
         }
-      )
+      })    
+      
   }
 
   openNew(title: string) {

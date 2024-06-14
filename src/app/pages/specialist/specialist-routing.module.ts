@@ -34,6 +34,11 @@ const routes: Routes = [
     loadComponent: () => import('../consultation/consultation-completed/consultation-completed.component')
       .then(mod => mod.ConsultationCompletedComponent)
   },
+  {
+    path: 'appointement-day',
+      loadComponent: () => import('../appointement/appointement-day/appointement-day.component')
+        .then(mod => mod.AppointementDayComponent)
+    },
 
 ];
 

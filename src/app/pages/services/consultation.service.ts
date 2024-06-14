@@ -21,6 +21,10 @@ export class ConsultationService {
   getConsultations(): Observable<Consultation[]> {
     return this.http.get<Consultation[]>(`${this.apiUrl}/consultation-list`);
   }
+  
+  getAppointement(): Observable<Consultation[]> {
+    return this.http.get<Consultation[]>(`${this.apiUrl}/appointement-list`);
+  }
 
   getConsultation(id: string): Observable<Consultation> {
     return this.http.get<Consultation>(`${this.apiUrl}/${id}`);

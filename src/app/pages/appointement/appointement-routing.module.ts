@@ -9,6 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('../specialist/consultation/consultation.module')
       .then(mod => mod.ConsultationModule)
   },
+  
 ];
 
 @NgModule({

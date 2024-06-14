@@ -17,7 +17,7 @@
         <div class="container-fluid card">
             <p-table 
             #myTab3  
-            [value]="patients" 
+            [value]="consultations!" 
             [tableStyle]="{ 'min-width': '50rem' }"
             [paginator]="true"
             [rows]="5"
@@ -40,26 +40,29 @@
             
                 <ng-template pTemplate="header">
                     <tr>
-                        <th >Create ID</th>
+                        <th >#</th>
                         <th >First Name</th>
                         <th >Last Name</th>
-                        <th >Birthday</th>
+                        <th >Date Appointement</th>
                         <th >Address</th>
                         <th >Phone</th>
-                        <th >Actions</th>
+                        <th >Consultation Type</th>
+                        <!-- <th >Actions</th> -->
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-patient>
+                <ng-template pTemplate="body" let-consultation let-i="rowIndex">
                     <tr>
-                        <td>{{ patient.IDDOSSIERPATIENT }}</td>
-                        <td>{{ patient.NOMPATIENT }}</td>
-                        <td>{{ patient.PRENOMSPATIENT }}</td>
-                        <td>{{ patient.ADESSEPATIENT }}</td>
-                        <td>{{ patient.TELPATIENT }}</td>
-                        <td>{{ patient.PROFESSIONPATIENT }}</td>
-                        <td>
+                       
+                        <td>{{ i + 1}}</td>
+                        <td>{{ consultation.patientDetails.firstName }}</td>
+                        <td>{{ consultation.patientDetails.lastName }}</td>
+                        <td>{{ consultation.date }}</td>
+                        <td>{{ consultation.patientDetails.address }}</td>
+                        <td>{{ consultation.patientDetails.phone }}</td>
+                        <td>{{ consultation.TYPECONSULTATION }}</td>
+                        <!-- <td>
                             <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consultation</button>
-                        </td>
+                        </td> -->
                     </tr>
                 </ng-template>
             </p-table>

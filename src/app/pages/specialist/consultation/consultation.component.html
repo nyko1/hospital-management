@@ -108,7 +108,7 @@
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                         <div class="form-group">
                                             <label for="biO">Patient History</label>
-                                            <textarea class="form-control" id="biO"
+                                            <textarea class="form-control"
                                                 formControlName="patientHistory" name="patientHistory"
                                                 placeholder="Patient History"></textarea>
                                         </div>
@@ -124,7 +124,7 @@
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                         <div class="form-group">
                                             <label for="inputWeight">Weight</label>
-                                            <input type="text" class="form-control" id="inputWeight"
+                                            <input type="number" class="form-control" id="inputWeight"
                                                 formControlName="weight" name="weight"
                                                 placeholder="65 KG">
                                         </div>
@@ -146,6 +146,13 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                         <div class="form-group">
+                                            <label for="prescription">Prescription</label>
+                                            <textarea placeholder="Prescription " name="prescription" formControlName="prescription" class="form-control" id="diagnostic"
+                                                ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
                                             <label for="statut">Statut Consultation</label>
                                             <select 
                                             aria-controls="statut" formControlName="statut" name="statut" class="form-control form-control-sm selectpicker">
@@ -157,17 +164,22 @@
                                         </select> 
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                        <div class="text-right">
-                                            <button class="btn btn-primary">Exam</button>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Appointment</button>
+                                            <label for="dateRdv">Get appointement</label>
+                                            <input type="date" class="form-control" 
+                                                formControlName="dateRdv" name="dateRdv">
+                                                @if (consultationForm?.get('dateRdv')?.hasError('dateInvalid') && consultationForm?.get('dateRdv')?.touched) {
+                                                    <small class="text-danger">La date du rendez-vous ne peut pas être aujourd'hui ou dans le passé.</small>
+                                                }
                                         </div>
                                     </div>
-
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="text-right">
+                                            <button class="btn btn-primary">Ask Exam</button>
+                                        </div>
+                                    </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="text-right">
                                             <button class="btn btn-primary">Create Consultation</button>
@@ -190,7 +202,7 @@
     ************* -->
 
  <!-- Start Modal -->
- <!-- <p-dialog [(visible)]="consultationDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
+ <!-- <p-dialog [(visible)]="consultationDialog" [style]="{ width: '450px' }" header="Prise de RDV" [modal]="true"
  styleClass="p-fluid">
  <ng-template pTemplate="content">
      <div class="field" [style]="{ height: '150px' }">

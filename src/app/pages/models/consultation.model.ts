@@ -9,4 +9,5 @@ export interface Consultation {
   ACTEMEDICAL?: string;
   PRESCRIPTION?: string;
   CONSTANTE?: string;
+  DATERDV?: string;
 }
