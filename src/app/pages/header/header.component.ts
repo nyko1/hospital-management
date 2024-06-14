@@ -15,8 +15,7 @@ import { Location } from '@angular/common';
 export class HeaderComponent implements OnInit{
     userInfo: any;
     specialist: any;
-    userRole: string | null = localStorage.getItem('role')
-
+    userRole: string | null |undefined
     constructor(
         private authService: AuthService, 
         private router: Router,
@@ -25,6 +24,8 @@ export class HeaderComponent implements OnInit{
     ) { }
 
     ngOnInit(): void {
+        this.userRole = localStorage.getItem('role')
+
         if (typeof window != 'undefined') {
             this.authService.getUserById(localStorage.getItem('id')!).subscribe(
                 response =>{

@@ -87,6 +87,7 @@ export class ListPatientComponent  implements OnInit{
   specialities: any[] = [];
   consultationType: any
   filteredSpecialists: any[] = []; // Array to hold filtered specialists
+  userRole: string | null | undefined;
 
   constructor(
     private router: Router,
@@ -97,6 +98,7 @@ export class ListPatientComponent  implements OnInit{
   ) {}
 
   ngOnInit() {
+    this.userRole  = localStorage.getItem("role")
 
     this.consultations = {
       IDCONSULTATION: '',

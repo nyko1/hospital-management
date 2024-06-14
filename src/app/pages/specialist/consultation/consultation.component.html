@@ -118,7 +118,7 @@
                                             <label for="inputHeight">Height</label>
                                             <input type="number" class="form-control" id="inputHeight"
                                                 formControlName="height" name="height"
-                                                placeholder="1.76cm">
+                                                placeholder="176cm">
                                         </div>
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
@@ -164,10 +164,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                         <div class="form-group">
-                                            <label for="inputRdv">Appointment</label>
-                                            <input type="date" class="form-control" id="inputRdv"
-                                                formControlName="appointment"
-                                                placeholder="37">
+                                            <button class="btn btn-primary">Appointment</button>
                                         </div>
                                     </div>
 
@@ -192,5 +189,40 @@
         ************ Main container end *************
     ************* -->
 
+ <!-- Start Modal -->
+ <!-- <p-dialog [(visible)]="consultationDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
+ styleClass="p-fluid">
+ <ng-template pTemplate="content">
+     <div class="field" [style]="{ height: '150px' }">
+         <label for="specialite">Consultation Type </label>
+         <p-dropdown [options]="specialities" [(ngModel)]="consultationType" inputId="specialite"
+             (onChange)="onSpecialityChange($event)">
+             <ng-template let-speciality pTemplate="selectedItem">
+                 <p-tag [value]="speciality" />
+             </ng-template>
+             <ng-template let-speciality pTemplate="item">
+                 <span>{{ speciality }}</span>
+             </ng-template>
+         </p-dropdown>
+     </div>
+     <div class="field" [style]="{ height: '150px' }">
+         <label for="Specialist">Specialist </label>
+         <p-dropdown [options]="filteredSpecialists" inputId="specialist">
+             <ng-template let-specialist pTemplate="selectedItem">
+                 <p-tag [value]="specialist" />
+             </ng-template>
+             <ng-template let-specialist pTemplate="item">
+                 <span>{{ specialist }}</span>
+             </ng-template>
+         </p-dropdown>
+     </div>
 
+ </ng-template>
+
+ <ng-template pTemplate="footer">
+     <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()" />
+     <p-button pRipple label="Assign" icon="pi pi-check" [text]="true" (onClick)="onAssign()"/>
+ </ng-template>
+</p-dialog> -->
+<!-- End Modal -->
 </div>

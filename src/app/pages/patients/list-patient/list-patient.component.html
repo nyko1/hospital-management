@@ -60,7 +60,9 @@
                         <td>
                             
                             <button type="button" style="margin-right: 10px;" (click)="openNew(patient.IDDOSSIERPATIENT, 'Consultation Details')" class="btn btn-primary btn-sm">Consultation</button>
-                            <button type="button" class="btn btn-secondary btn-sm" (click)="openNew(patient.IDDOSSIERPATIENT,'Appointement Details')">RDV</button>
+                            @if (userRole !== 'reception' && userRole !=='receptionniste') {
+                                <button type="button" class="btn btn-secondary btn-sm" (click)="openNew(patient.IDDOSSIERPATIENT,'Appointement Details')">RDV</button>
+                            }
                         </td>
                     </tr>
                 </ng-template>

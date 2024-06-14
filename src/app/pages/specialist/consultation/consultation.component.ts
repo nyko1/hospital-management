@@ -5,6 +5,7 @@ import { PatientService } from '../../services/patient.service';
 import { ConsultationService } from '../../services/consultation.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Consultation } from '../../models/consultation.model';
 
 @Component({
     selector: 'app-consultation',
@@ -23,6 +24,10 @@ export class ConsultationComponent implements OnInit {
     
     consultationForm: FormGroup | undefined;
     idConsultation: string | null | undefined
+
+    // consultations?: Consultation
+    // modalTitle: string | undefined
+    // displayModal: boolean = false;
 
     constructor(
       private patientService: PatientService,
