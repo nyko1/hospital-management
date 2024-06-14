@@ -23,47 +23,47 @@ interface Patient {
 })
 export class PatientService {
 
-  private apiUrl = 'http://localhost/API_PHP/patients.php';
+  private apiUrl = 'http://localhost:3000/api/patient';
 
   constructor(private http: HttpClient) { }
 
   getPatients(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(`${this.apiUrl}`)
+    return this.http.get<Patient[]>(`${this.apiUrl}/patient-list`)
       .pipe(catchError(this.handleError));
   }
 
   getPatient(id: string): Observable<Patient> {
-    return this.http.get<Patient>(`${this.apiUrl}/patients/${id}`)
+    return this.http.get<Patient>(`${this.apiUrl}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
   addPatient(patient: Patient): Observable<Patient> {
-    return this.http.post<Patient>(`${this.apiUrl}`, patient)
+    return this.http.post<Patient>(`${this.apiUrl}/create`, patient)
       .pipe(catchError(this.handleError));
   }
 
   updatePatient(id: string, patient: Patient): Observable<any> {
-    return this.http.put(`${this.apiUrl}/patients/${id}`, patient)
+    return this.http.put(`${this.apiUrl}/update/${id}`, patient)
       .pipe(catchError(this.handleError));
   }
 
   deletePatient(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/patients/${id}`)
+    return this.http.delete(`${this.apiUrl}/delete/${id}`)
       .pipe(catchError(this.handleError));
   }
 
   getDailyPatientCount(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/patients/count/daily`)
+    return this.http.get(`${this.apiUrl}/count/daily`)
       .pipe(catchError(this.handleError));
   }
 
   getTotalPatientCount(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/patients/count/total`)
+    return this.http.get(`${this.apiUrl}/count/total`)
       .pipe(catchError(this.handleError));
   }
 
   getAveragePatient(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/patients/average`)
+    return this.http.get(`${this.apiUrl}/average`)
       .pipe(catchError(this.handleError));
   }
 

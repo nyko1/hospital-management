@@ -110,31 +110,31 @@ export class ListPatientComponent  implements OnInit{
       CONSTANTE: ''
     };
     
-    this.patientService.getPatients()
-    .subscribe((data) => {
-      this.patients = data;
-        
-    },
-    error =>{
-      console.error(error);
-      
-    }
-  );
-
-  this.specialistService.getSpecialists()
-    .subscribe((data) => {
-      //console.log(data);
-      this.specilists = data;
-      this.specialities = data.map((specialist: any) => specialist.SPECIALITE); // Extract specialities
-      //console.log(this.specialities);
-      
-        
-    },
-    error =>{
-      console.error(error);
-      
-    }
-  );
+    this.patientService.getPatients().subscribe({
+      next: (data) => {
+        this.patients = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log('Patient data retrieval completed');
+      }
+    });
+    
+    this.specialistService.getSpecialists().subscribe({
+      next: (data) => {
+        this.specilists = data;
+        this.specialities = data.map((specialist: any) => specialist.SPECIALITE); // Extract specialities
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log('Specialist data retrieval completed');
+      }
+    });
+    
 
   }
 

@@ -8,31 +8,31 @@ import { Consultation } from '../models/consultation.model';
   providedIn: 'root'
 })
 export class ConsultationService {
-  private apiUrl = 'http://localhost/API_PHP/consultation.php'; // Remplacez par l'URL de votre API
+  private apiUrl = 'http://localhost:3000/api/consultation'; // Remplacez par l'URL de votre API
 
   constructor(private http: HttpClient) { }
 
   // Create
   createConsultation(consultation: Consultation): Observable<Consultation> {
-    return this.http.post<Consultation>(this.apiUrl, consultation);
+    return this.http.post<Consultation>(`${this.apiUrl}/create`, consultation);
   }
 
   // Read
   getConsultations(): Observable<Consultation[]> {
-    return this.http.get<Consultation[]>(this.apiUrl);
+    return this.http.get<Consultation[]>(`${this.apiUrl}/consultation-list`);
   }
 
   getConsultation(id: string): Observable<Consultation> {
-    return this.http.get<Consultation>(`${this.apiUrl}/consultation/${id}`);
+    return this.http.get<Consultation>(`${this.apiUrl}/${id}`);
   }
 
   // Update
   updateConsultation(id: string, consultation: Consultation): Observable<Consultation> {
-    return this.http.put<Consultation>(`${this.apiUrl}/update-consultation/${id}`, consultation);
+    return this.http.put<Consultation>(`${this.apiUrl}/update/${id}`, consultation);
   }
 
   // Delete
   deleteConsultation(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
 }

@@ -15,7 +15,7 @@ export interface Specialist {
 })
 export class SpecialistService {
 
-  private apiUrl = 'http://localhost:3000/specialist'; // URL de votre API Node.js
+  private apiUrl = 'http://localhost:3000/api/specialist'; // URL de votre API Node.js
 
   constructor(private http: HttpClient) { }
   

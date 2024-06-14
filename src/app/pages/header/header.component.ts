@@ -61,6 +61,9 @@ export class HeaderComponent implements OnInit{
             case "receptionniste":
                 this.router.navigate(['reception'])
                 break;
+            case "admin":
+                this.router.navigate(['/admin'])
+                break;
             default:
                 this.router.navigate(['/specialist'])
                 break;
