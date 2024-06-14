@@ -37,8 +37,6 @@ import { DateUtil } from '../utils/date-util';
     TagModule, 
     TableModule, 
       CommonModule,
-      IconFieldModule,
-      InputIconModule,
       InputTextModule,
       
   ],

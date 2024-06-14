@@ -1,1 +1,112 @@
-<p>appointement-day works!</p>
+<!-- Header -->
+<app-header></app-header>
+
+<main>
+    <div class="main-container">
+
+        <!-- Page header start -->
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Appointement</li>
+                <li class="breadcrumb-item active">List Appointement</li>
+            </ol>
+            
+        </div>
+
+ 
+        <div class="container-fluid card">
+            <p-table 
+            #myTab3  
+            [value]="consultations!" 
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [paginator]="true"
+            [rows]="5"
+            [globalFilterFields]="['name', 'code', 'category']"
+            [rowsPerPageOptions]="[5,10,15,20]"
+              
+            >
+                <ng-template pTemplate="caption">
+                    <div class="flex">
+                        <p-iconField iconPosition="left" class="ml-auto">
+                            <p-inputIcon styleClass="pi pi-search" />
+                            <input 
+                                pInputText 
+                                type="text" 
+                                (input)= "myTab3.filterGlobal($any($event.target).value, 'contains')"
+                                placeholder="Search keyword" />
+                        </p-iconField>
+                    </div>
+                </ng-template>
+            
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th >#</th>
+                        <th >First Name</th>
+                        <th >Last Name</th>
+                        <th >Date Appointement</th>
+                        <th >Address</th>
+                        <th >Phone</th>
+                        <th >Consultation Type</th>
+                        <!-- <th >Actions</th> -->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-consultation let-i="rowIndex">
+                    <tr>
+                       
+                        <td>{{ i + 1}}</td>
+                        <td>{{ consultation?.patientDetails.firstName }}</td>
+                        <td>{{ consultation?.patientDetails.lastName }}</td>
+                        <td>{{ consultation?.date }}</td>
+                        <td>{{ consultation?.patientDetails.address }}</td>
+                        <td>{{ consultation?.patientDetails.phone }}</td>
+                        <td>{{ consultation?.TYPECONSULTATION }}</td>
+                        <!-- <td>
+                            <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consultation</button>
+                        </td> -->
+                    </tr>
+                </ng-template>
+            </p-table>
+            <!-- Start Modal -->
+            <!-- <p-dialog [(visible)]="patientDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
+                styleClass="p-fluid">
+                <ng-template pTemplate="content">
+                    <div class="field">
+                        <label for="category">Consultation Type </label>
+                        <p-dropdown [(ngModel)]="patient" inputId="category">
+                            <ng-template pTemplate="selectedItem">
+                                <p-tag />
+                            </ng-template>
+                            <ng-template let-patient pTemplate="item">
+                                <p-tag [value]="patient.name"/>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                    <div class="field">
+                        <label for="Specialist">Specialist </label>
+                        <p-dropdown [(ngModel)]="patient" inputId="specialist">
+                            <ng-template pTemplate="selectedItem">
+                                <p-tag/>
+                            </ng-template>
+                            <ng-template let-product pTemplate="item">
+                                <p-tag />
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+            
+                </ng-template>
+            
+                <ng-template pTemplate="footer">
+                    <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()" />
+                    <p-button pRipple label="Assign" icon="pi pi-check" [text]="true"  />
+                </ng-template>
+            </p-dialog> -->
+            <!-- End Modal -->
+        </div>
+
+       
+   </div>
+
+    <footer class="main-footer">© NykoGes Hospitals 2024</footer>
+
+</main>
+
