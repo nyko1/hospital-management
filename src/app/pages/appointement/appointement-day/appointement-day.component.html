@@ -47,22 +47,22 @@
                         <th >Address</th>
                         <th >Phone</th>
                         <th >Consultation Type</th>
-                        <!-- <th >Actions</th> -->
+                        <th >Actions</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-consultation let-i="rowIndex">
                     <tr>
                        
                         <td>{{ i + 1}}</td>
-                        <td>{{ consultation?.patientDetails.firstName }}</td>
-                        <td>{{ consultation?.patientDetails.lastName }}</td>
-                        <td>{{ consultation?.date }}</td>
-                        <td>{{ consultation?.patientDetails.address }}</td>
-                        <td>{{ consultation?.patientDetails.phone }}</td>
-                        <td>{{ consultation?.TYPECONSULTATION }}</td>
-                        <!-- <td>
+                        <td>{{ consultation.patientDetails.firstName }}</td>
+                        <td>{{ consultation.patientDetails.lastName }}</td>
+                        <td>{{ consultation.date }}</td>
+                        <td>{{ consultation.patientDetails.address }}</td>
+                        <td>{{ consultation.patientDetails.phone }}</td>
+                        <td>{{ consultation.TYPECONSULTATION }}</td>
+                        <td>
                             <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consultation</button>
-                        </td> -->
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>

@@ -25,6 +25,11 @@ const routes: Routes = [
       .then(mod => mod.AppointementModule)
   },
   {
+    path: 'appointement-day',
+    loadComponent: () => import('../appointement/appointement-day/appointement-day.component')
+      .then(mod => mod.AppointementDayComponent)
+  },
+  {
     path: 'consultation-list',
     loadComponent: () => import('../consultation/consultation-list/consultation-list.component')
       .then(mod => mod.ConsultationListComponent)
