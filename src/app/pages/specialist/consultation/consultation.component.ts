@@ -26,11 +26,6 @@ export class ConsultationComponent implements OnInit {
     idConsultation: string | null | undefined
 
     consultations: any = {};
-    displayModal: boolean = false;
-    rdvDialog: boolean = false
-    submitted: boolean = false;
-    idPatient: string = ""
-    idSpecialist: string | undefined;
 
     constructor(
       private patientService: PatientService,
@@ -76,8 +71,7 @@ export class ConsultationComponent implements OnInit {
                     const [heightValue, weightValue, temperatureValue] = res.CONSTANTE!.split("/");
                     // Formatez la date de naissance au format "yyyy-MM-dd" avant de la mettre dans le formulaire
                     const formattedDate = DateUtil.formatDate(data.DATENAISSPATIENT);
-                    const dateRdv = DateUtil.formatDate(res.DATERDV!)
-                    console.log(dateRdv);
+                    const dateRdv = res.DATERDV ? DateUtil.formatDate(res.DATERDV!): ''
                     
                     this.consultationForm?.patchValue({
                       cslID: res.IDCONSULTATION,
@@ -139,7 +133,7 @@ export class ConsultationComponent implements OnInit {
         this.consultations.ACTEMEDICAL = this.consultationForm.get('patientHistory')?.value || '';
         this.consultations.PRESCRIPTION = this.consultationForm.get('prescription')?.value || '';
         this.consultations.CONSTANTE = this.constantes(); // Combine values here
-        this.consultations.DATERDV = this.consultationForm.get('dateRdv')?.value || '';
+        this.consultations.DATERDV = this.consultationForm.get('dateRdv')?.value || null;
   
       //console.log(this.consultationForm?.value);
       
@@ -157,16 +151,6 @@ export class ConsultationComponent implements OnInit {
 
   goToBackPage(){
     this.location.back();
-  }
-
-  openNew(idSpecialist: string) {
-    this.submitted = false;
-    this.rdvDialog = true;
-    //this.idPatient = id
-  }
-  hideDialog() {
-    this.rdvDialog = false;
-    this.submitted = false;
   }
 
 
