@@ -91,7 +91,7 @@ export class AppointementComponent implements OnInit{
               //console.log('List of consultations with patient details:', this.consultations);
             }
           })
-          console.log('list',this.consultations);
+          //console.log('list',this.consultations);
           
           
         },

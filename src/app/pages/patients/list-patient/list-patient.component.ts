@@ -90,7 +90,6 @@ export class ListPatientComponent  implements OnInit{
   userRole: string | null | undefined;
 
   constructor(
-    private router: Router,
     private messageService: MessageService,
     private patientService: PatientService,
     private specialistService: SpecialistService,

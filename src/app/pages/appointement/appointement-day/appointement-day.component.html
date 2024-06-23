@@ -54,41 +54,42 @@
                     <tr>
                        
                         <td>{{ i + 1}}</td>
-                        <td>{{ consultation.patientDetails.firstName }}</td>
-                        <td>{{ consultation.patientDetails.lastName }}</td>
+                        <td>{{ consultation.patientDetails?.firstName }}</td>
+                        <td>{{ consultation.patientDetails?.lastName }}</td>
                         <td>{{ consultation.date }}</td>
-                        <td>{{ consultation.patientDetails.address }}</td>
-                        <td>{{ consultation.patientDetails.phone }}</td>
+                        <td>{{ consultation.patientDetails?.address }}</td>
+                        <td>{{ consultation.patientDetails?.phone }}</td>
                         <td>{{ consultation.TYPECONSULTATION }}</td>
                         <td>
-                            <button type="button" style="margin-right: 10px;" routerLink="/specialist/consultation" class="btn btn-primary btn-sm">Consultation</button>
+                            <button type="button" style="margin-right: 10px;" (click)="openNew(consultation.IDDOSSIERPATIENT, 'Consultation Details')" class="btn btn-primary btn-sm">Consultation</button>
                         </td>
                     </tr>
                 </ng-template>
             </p-table>
             <!-- Start Modal -->
-            <!-- <p-dialog [(visible)]="patientDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
+            <p-dialog [(visible)]="patientDialog" [style]="{ width: '450px' }" [header]="modalTitle" [modal]="true"
                 styleClass="p-fluid">
                 <ng-template pTemplate="content">
-                    <div class="field">
+                    <div class="field" [style]="{ height: '100px' }">
                         <label for="category">Consultation Type </label>
-                        <p-dropdown [(ngModel)]="patient" inputId="category">
-                            <ng-template pTemplate="selectedItem">
-                                <p-tag />
-                            </ng-template>
-                            <ng-template let-patient pTemplate="item">
-                                <p-tag [value]="patient.name"/>
-                            </ng-template>
-                        </p-dropdown>
+                        <p-dropdown [options]="specialities" [(ngModel)]="consultationType" inputId="specialite"
+                        (onChange)="onSpecialityChange($event)" >
+                        <ng-template let-speciality pTemplate="selectedItem">
+                            <p-tag [value]="speciality" />
+                        </ng-template>
+                        <ng-template let-speciality pTemplate="item">
+                            <span>{{ speciality }}</span>
+                        </ng-template>
+                    </p-dropdown>
                     </div>
-                    <div class="field">
+                    <div class="field" [style]="{ height: '100px' }">
                         <label for="Specialist">Specialist </label>
-                        <p-dropdown [(ngModel)]="patient" inputId="specialist">
-                            <ng-template pTemplate="selectedItem">
-                                <p-tag/>
+                        <p-dropdown [options]="filteredSpecialists" inputId="specialist">
+                            <ng-template let-specialist pTemplate="selectedItem">
+                                <p-tag [value]="specialist" />
                             </ng-template>
-                            <ng-template let-product pTemplate="item">
-                                <p-tag />
+                            <ng-template let-specialist pTemplate="item">
+                                <span>{{ specialist }}</span>
                             </ng-template>
                         </p-dropdown>
                     </div>
@@ -97,12 +98,13 @@
             
                 <ng-template pTemplate="footer">
                     <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()" />
-                    <p-button pRipple label="Assign" icon="pi pi-check" [text]="true"  />
+                    <p-button pRipple label="Assign" icon="pi pi-check" [text]="true" (click)="onAssign()" />
                 </ng-template>
-            </p-dialog> -->
+            </p-dialog>
             <!-- End Modal -->
         </div>
-
+         <!-- Notifications Toast -->
+        <p-toast></p-toast>
        
    </div>
 

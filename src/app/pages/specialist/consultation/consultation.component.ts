@@ -77,6 +77,8 @@ export class ConsultationComponent implements OnInit {
                     // Formatez la date de naissance au format "yyyy-MM-dd" avant de la mettre dans le formulaire
                     const formattedDate = DateUtil.formatDate(data.DATENAISSPATIENT);
                     const dateRdv = DateUtil.formatDate(res.DATERDV!)
+                    console.log(dateRdv);
+                    
                     this.consultationForm?.patchValue({
                       cslID: res.IDCONSULTATION,
                       patID: data.IDDOSSIERPATIENT,

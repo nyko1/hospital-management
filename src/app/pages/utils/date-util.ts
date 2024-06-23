@@ -7,7 +7,7 @@ export class DateUtil {
       const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Les mois sont indexés à partir de 0
       const day = date.getDate().toString().padStart(2, '0');
   
-      return `${day}-${month}-${year}`;
+      return `${year}-${month}-${day}`;
     }
   }
   
