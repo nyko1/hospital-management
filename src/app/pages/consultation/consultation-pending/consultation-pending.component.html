@@ -1,1 +1,83 @@
-<p>consultation-pending works!</p>
+<!-- Header -->
+<app-header></app-header>
+
+<main>
+    <div class="main-container">
+
+        <!-- Page header start -->
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Consultation</li>
+                <li class="breadcrumb-item active">Consultation Pending</li>
+            </ol>
+            
+        </div>
+
+ 
+        <div class="container-fluid card">
+            <p-table 
+            #myTab3  
+            [value]="todayConsultations" 
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [paginator]="true"
+            [rows]="5"
+            [globalFilterFields]="['NOMPATIENT', 'PRENOMSPATIENT', 'TELPATIENT']"
+            [rowsPerPageOptions]="[5,10,15,20]"
+              
+            >
+                <ng-template pTemplate="caption">
+                    <div class="flex">
+                        <p-iconField iconPosition="left" class="ml-auto">
+                            <p-inputIcon styleClass="pi pi-search" />
+                            <input 
+                                pInputText 
+                                type="text" 
+                                (input)= "myTab3.filterGlobal($any($event.target).value, 'contains')"
+                                placeholder="Search keyword" />
+                        </p-iconField>
+                    </div>
+                </ng-template>
+            
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th >#</th>
+                        <th >First Name</th>
+                        <th >Last Name</th>
+                        <th >Phone</th>
+                        <th >Type Consultation</th>
+                        @if (userRole != "reception" && userRole != "receptionniste" && userRole != "admin") {
+                            <th >Actions</th>
+                        }
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-toDayConsultation let-i="rowIndex">
+                    <tr>
+                        @if (userRole?.toUpperCase() === toDayConsultation.TYPECONSULTATION.toUpperCase()) {
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ toDayConsultation.NOMPATIENT }}</td>
+                            <td>{{ toDayConsultation.PRENOMSPATIENT }}</td>
+                            <td>{{ toDayConsultation.TELPATIENT }}</td>
+                            <td>{{ toDayConsultation.TYPECONSULTATION }}</td>
+                            @if (userRole != "reception" && userRole != "receptionniste" && userRole != "admin") {
+                                <td>
+                                    <button type="button" style="margin-right: 10px;" [routerLink]="['/specialist/consultation/', toDayConsultation.IDCONSULTATION]" class="btn btn-primary btn-sm">Consulter</button>
+                                </td>
+                            }
+                        }
+                        
+                        
+                        
+                    </tr>
+                </ng-template>
+            </p-table>
+           
+        </div>
+
+       
+   </div>
+
+<!-- footer -->
+<footer></footer>
+</main>
+
+
