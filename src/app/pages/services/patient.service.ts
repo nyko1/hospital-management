@@ -23,7 +23,7 @@ interface Patient {
 })
 export class PatientService {
 
-  private apiUrl = 'http://localhost:3000/api/patient';
+  private apiUrl = 'https://hospital-management-api-vzvl.onrender.com/api/patient';
 
   constructor(private http: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthService {
   
-  private apiUrl = 'http://localhost:3000/auth'; // URL de votre API Node.js
+  private apiUrl = 'https://hospital-management-api-vzvl.onrender.com/auth'; // URL de votre API Node.js
 
   constructor(private http: HttpClient) { }
 

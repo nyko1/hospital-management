@@ -8,7 +8,7 @@ import { Consultation } from '../models/consultation.model';
   providedIn: 'root'
 })
 export class ConsultationService {
-  private apiUrl = 'http://localhost:3000/api/consultation'; // Remplacez par l'URL de votre API
+  private apiUrl = 'https://hospital-management-api-vzvl.onrender.com/api/consultation'; // Remplacez par l'URL de votre API
 
   constructor(private http: HttpClient) { }
 
