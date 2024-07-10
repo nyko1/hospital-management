@@ -47,10 +47,10 @@ export class AddPatientComponent implements OnInit{
       DATENAISSPATIENT: ['', Validators.required],
       ADRESSEPATIENT: ['', Validators.required],
       TELPATIENT: ['', Validators.required],
-      EMAILPATIENT: ['', [Validators.required, Validators.email]],
+      EMAILPATIENT: [''],
       PROFESSIONPATIENT: ['', Validators.required],
       ANTECEDENTPATIENT: [''],
-      GROUPESANGUIN: ['', Validators.required]
+      GROUPESANGUIN: ['']
     });
     console.log(this.getPatients());
     
