@@ -5,7 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 
 
 export const routes: Routes = [
-    { path: 'login', component: LoginComponent },
+        { path: 'login', component: LoginComponent },
+        { path: '', component: LoginComponent },
     { path: 'admin', 
             loadChildren: () => import('../app/pages/admin/admin.module').
             then(m => m.AdminModule), canActivate: [AuthGuard]
@@ -19,22 +20,11 @@ export const routes: Routes = [
             then(m => m.SpecialistModule), canActivate: [AuthGuard]
     },
     {
-        path: 'accueil',
-        loadComponent: () => import('./pages/accueil/accueil.module')
-            .then(mod => mod.AccueilModule)
-    },
-    {
-        path: '',
-        loadComponent: () => import('./pages/accueil/accueil.component')
-            .then(mod => mod.AccueilComponent)
-    },
-    {
         path: 'edit-profile/:id',
         loadChildren: () => import('./pages/edit-profil/edit-profil.module')
             .then(mod => mod.EditProfilModule)
     },
     
-
 
     
     { path: '**', component: NotFoundComponent }
