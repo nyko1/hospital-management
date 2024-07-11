@@ -71,9 +71,6 @@ export class AuthService {
       const role = localStorage.getItem('role');
       return role ? role : null;
     }
-    
-    
-    
 
     getUsers(): Observable<any>{
       const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);

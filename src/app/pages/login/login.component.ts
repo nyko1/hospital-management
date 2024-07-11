@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.errorMessage = undefined;
     this.authService.login(this.username!, this.password!).subscribe(
-      response => {
+     { 
+      next: () => {
         //localStorage.setItem('user', JSON.stringify(response));
         const role = localStorage.getItem('role');
         this.loading = false;
@@ -54,11 +55,11 @@ export class LoginComponent implements OnInit {
         }
         
       },
-      error => {
+       error: (error) => {
         this.loading = false;
         this.errorMessage = 'Login failed. Please check your credentials and try again.';
         console.error('Login failed', error);
       }
-    );
+    });
   }
 }
