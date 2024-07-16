@@ -47,13 +47,14 @@ export class ReceptionComponent implements OnInit{
       )
 
       // Nombre patients
-      this.patientService.getTotalPatientCount().subscribe(response=>{
+      this.patientService.getTotalPatientCount().subscribe({
+        next:  (response)=>{
         this.nombrePatients = response.total
-      },
-      error =>{
-        console.error(error);
-        
-      }
+        },
+        error:  (error) =>{
+          console.error(error);
+          
+      }}
     )
     
   }
